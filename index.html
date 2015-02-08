@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全局样式</title>
+	<link rel="stylesheet" href="css/css.css">
+	<link rel="stylesheet" href="css/common.css">
+	<script src="js/jq.1.9.min.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/rainbow-custom.min.js"></script>
+	<script type="text/javascript" src="js/jquery.zclip.js"></script>
+	<script type="text/javascript">
+	var arrs;
+		$(function()
+		{
+			//隔行换色
+			$(".tab tbody tr:even").addClass("even");
+			//选项卡
+			$(".tabs").tabs("click");
+			//弹出层
+			$("#alert").Jumovepop(
+				{move:false,
+				follow:true,
+				bg:true,
+				close:true,
+				bgcss:{opacity:0.6},
+				boxcss:{},
+				parent:$(".popContent")}
+			)
+			//遮罩
+			$("#load").Jumovepop(
+				{move:false,
+				follow:true,
+				bg:true,
+				close:true,
+				bgcss:{opacity:0.6},
+				boxcss:{},
+				parent:$(".loading")}
+			)
+
+			//复制功能
+			$(".daima").each(function(i)
+			{
+				var btn=$(this).find(".btn-fz");
+				var dai=$(this).find(".hide")
+				btn.zclip({
+			        copy:function(){return dai.html();}
+			    });
+			})
+
+			arrs=[];
+			$(".left h2").each(function(i)
+			{
+				arrs.push($(".left h2").eq(i).get(0).offsetTop)
+			})
+
+			$(window).scroll(function(){
+
+			  for(var i=arrs.length-1;i>=0;i--)
+			  {
+			  	$(".right dt").removeClass("act")
+			  	if(($(document).scrollTop()+parseInt($(window).height())-20)>arrs[i])
+			  	{
+					$(".right dt").eq(i).addClass("act")
+					return false;
+			  	}
+			 
+
+			  }
+			});
+			$(".right dt").each(function(i)
+			{
+				$(this).click(function()
+				{
+					$(".right dt").removeClass("act")
+					$(this).addClass("act")
+					$(window).scrollTop($(".left h2").eq(i).get(0).offsetTop+parseInt($("#synopsis").height()))
+				})
+			})
+			
+		})
+	</script>
+</head>
+<body>
+	
+</body>
+	<div id='box'>
+		<div id="synopsis">
+			<h1>全局样式</h1>
+			<p>设置全局样式，让网站风格统一。支持ie8以上ie系列浏览器，部分样式因为是css3的ie8不支持，如圆角等。</p>
+		</div>
+		<div id="center">
+			<div class="left">
+
+				<h2>按钮</h2>
+				<h3>预定义样式</h3>
+				<p>使用下面class可以快速创建一个按钮。</p>
+				<p>
+					<!--<input type="button" class="btn btn-searsh" value="搜索" />
+					<input type="button" class="btn btn-confirm" value="确定" />
+					<input type="button" class="btn btn-clear" value="清空" /> 
+					-->
+				</p>
+				<div class="box-table">
+					<table width="100%">
+						<thead>
+							<tr>
+								<th>Normal</th>
+								<th>Hover / Down</th>
+								<th>Disable</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><a class="z-empty z-empty-normal" href="javscript:;">清空</a></td>
+								<td><a class="z-empty z-empty-hover" href="javscript:;">清空</a></td>
+								<td><a class="z-empty z-empty-disable" href="javscript:;">清空</a></td>
+							</tr>
+							<tr>
+								<td><a class="z-define z-define-normal" href="javscript:;">确定</a></td>
+								<td><a class="z-define z-define-hover" href="javscript:;">确定</a></td>
+								<td><a class="z-define z-define-disable" href="javscript:;">确定</a></td>
+							</tr>
+							<tr>
+								<td><a class="z-buy z-buy-normal" href="javscript:;">购买</a></td>
+								<td><a class="z-buy z-buy-hover" href="javscript:;">购买</a></td>
+								<td><a class="z-buy z-buy-disable" href="javscript:;">购买</a></td>
+							</tr>
+							<tr>
+								<td><a class="z-close z-close-normal" href="javscript:;"><i class="z_close_ico"></i></a></td>
+								<td><a class="z-close z-close-hover" href="javscript:;"><i class="z_close_ico"></i></a></td>
+							</tr>
+							<tr>
+								<td><a class="z-add z-add-normal" href="javscript:;"><i class="z-add-ico"></i></a></td>
+								<td><a class="z-add z-add-hover" href="javscript:;"><i class="z-add-ico"></i></a></td>
+								<td><a class="z-add z-add-disable" href="javscript:;"><i class="z-add-ico"></i></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="daima">
+					<pre>
+ <code data-language = "html">
+&lt;a href="javscript:;" class="z-empty z-empty-normal">清空&lt;/a>
+&lt;a href="javscript:;" class="z-define z-define-normal">确定&lt;/a>
+&lt;a href="javscript:;" class="z-buy z-buy-normal">购买&lt;/a>
+&lt;a href="javscript:;" class="z-add z-add-normal">&lt;i class="z_close_ico">&lt;/i></a>
+&lt;a href="javscript:;" class="z-add z-add-normal">&lt;i class="z-add-ico">&lt;/i>&lt;/a></code>
+
+					</pre>
+					<input type="button" class="btn btn-clear btn-fz" value="复制" />
+					<div class="hide">
+						<input type="button" class="btn btn-searsh" value="搜索" />
+						<input type="button" class="btn btn-confirm" value="确定" />
+						<input type="button" class="btn btn-clear" value="清空" /> 
+					</div>
+				</div>
+				
+
+				<h3>按钮类</h3>
+				<p>为 &lt;a&gt;、&lt;button&gt; 或 &lt;input&gt; 元素应用按钮类。</p>
+				<p>
+					<a href="#" class="btn btn-clear">清空</a>
+					<button class="btn btn-clear" type="submit">清空</button>
+					<input class="btn btn-clear" type="button" value="清空">
+					<input class="btn btn-clear" type="submit" value="清空">
+				</p>
+				<div class="daima">				
+					<pre>
+						<code data-language = "html">&lt;a href="javscript:;" class="btn btn-clear">清空&lt;/a>
+&lt;button class="btn btn-clear" type="submit">清空&lt;/button>
+&lt;input class="btn btn-clear" type="button" value="清空">
+&lt;input class="btn btn-clear" type="submit" value="清空"></code>
+					</pre>
+					<input type="button" class="btn btn-clear btn-fz" value="复制" />
+					<div class="hide">
+						<a href="#" class="btn btn-clear">清空</a>
+						<button class="btn btn-clear" type="submit">清空</button>
+						<input class="btn btn-clear" type="button" value="清空">
+						<input class="btn btn-clear" type="submit" value="清空">
+					</div>
+				</div>
+
+
+				<h3>按钮样式</h3>
+				<p>按钮的一些样式.btn-radius：去掉圆角。</p>
+				<p>
+					<input class="btn btn-clear btn-radius" type="submit" value="清空">
+				</p>
+				<div class="daima">
+					<pre>
+					<code data-language = "html">&lt;input class="btn btn-clear btn-radius" type="submit" value="清空"></code>
+
+					</pre>
+					<input type="button" class="btn btn-clear btn-fz" value="复制" />
+					<div class="hide">
+						<input class="btn btn-clear btn-radius" type="submit" value="清空">
+					</div>
+				</div>
+				
+
+				<h2>表单</h2>
+				<form action="" class="form-control">
+					<table>
+						<tbody>
+							<tr>
+								<td>用 户 名：</td>
+								<td><input class="text" type="text" value="" placeholder="*********@qq.com" /></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>密　　码：</td>
+								<td><input  class="text" type="password" /></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>性　　别；</td>
+								<td>
+									<label><input type="radio" name="sex" /> <span>男</span></label> 
+									<label><input type="radio" name="sex" /> <span>女</span></label> 
+									<label><input type="radio" name="sex" /> <span>其他</span></label></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>爱　　好：</td>
+								<td>
+									<label><input type="checkbox"> <span>旅游</span></label>
+									<label><input type="checkbox"> <span>游戏</span></label>
+									<label><input type="checkbox"> <span>戏曲</span></label>
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>个人简介：</td>
+								<td><textarea rows="4"></textarea></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input type="button" class="btn btn-confirm" value="提交" /></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+				<p>
+					给form加一个class即可form-control
+				</p>
+				<div class="daima">
+					<pre>
+<code data-language = "html">&lt;form action="" class="form-control">
+&lt;table>
+	&lt;tbody>
+		&lt;tr>
+			&lt;td>用 户 名：</td>
+			&lt;td><input class="text" type="text" value="" placeholder="*********@qq.com" />&lt;/td>
+			&lt;td>&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>密　　码：&lt;/td>
+			&lt;td><input  class="text" type="password" />&lt;/td>
+			&lt;td></td>
+	&lt;/tr>
+		&lt;tr>
+			&lt;td>性　　别；&lt;/td>
+			&lt;td>
+				&lt;label><input type="radio" name="sex" /> &lt;span>男&lt;/span>&lt;/label> 
+				&lt;label><input type="radio" name="sex" /> &lt;span>女&lt;/span>&lt;/label> 
+				&lt;label><input type="radio" name="sex" /> &lt;span>其他&lt;/span>&lt;/label></td>
+			&lt;td>&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>爱　　好：&lt;/td>
+			&lt;td>
+				&lt;label><input type="checkbox"> &lt;span>旅游&lt;/span&lt;/label>
+				&lt;label><input type="checkbox"> &lt;span>游戏&lt;/span&lt;/label>
+				&lt;label><input type="checkbox"> &lt;span>戏曲&lt;/span&lt;/label>
+			&lt;/td>
+			&lt;td&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>个人简介：&lt;/td>
+			&lt;td>&lt;textarea rows="4&lt;/textarea&lt;/td>
+			&lt;td></td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td></td>
+			&lt;td><input type="button" class="btn btn-confirm" value="提交" &lt;/td>
+			&lt;td></td>
+		&lt;/tr>
+	&lt;/tbody>
+&lt;/table>
+&lt;/form></code>
+					</pre>
+					<input type="button" class="btn btn-clear btn-fz" value="复制" />
+					<div class="hide">
+						<form action="" class="form-control">
+							<table>
+								<tbody>
+									<tr>
+										<td>用 户 名：</td>
+										<td><input class="text" type="text" value="" placeholder="*********@qq.com" /></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>密　　码：</td>
+										<td><input  class="text" type="password" /></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>性　　别；</td>
+										<td>
+											<label><input type="radio" name="sex" /> <span>男</span></label> 
+											<label><input type="radio" name="sex" /> <span>女</span></label> 
+											<label><input type="radio" name="sex" /> <span>其他</span></label></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>爱　　好：</td>
+										<td>
+											<label><input type="checkbox"> <span>旅游</span></label>
+											<label><input type="checkbox"> <span>游戏</span></label>
+											<label><input type="checkbox"> <span>戏曲</span></label>
+										</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>个人简介：</td>
+										<td><textarea rows="4"></textarea></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td></td>
+										<td><input type="button" class="btn btn-confirm" value="提交" /></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+					</div>
+				</div>
+
+				<h2>分页</h2>
+				<p>交易大厅分页：</p>
+				<div class="page">
+					<a class="btn btn-clear btn-radius" href="javascript:;">上一页</a>
+					<strong>1</strong>
+					<a class="btn btn-clear btn-radius" href="javascript:;">2</a>
+					<a class="btn btn-clear btn-radius" href="javascript:;">3</a>
+					<a class="btn btn-clear btn-radius" href="javascript:;">4</a>
+					<a class="btn btn-clear btn-radius" href="javascript:;">5</a>
+					<a class="btn btn-clear btn-radius" href="javascript:;">下一页</a>
+					<span>共 12 页 第</span>
+					<input class="text" type="text">
+					<span>页</span>
+					<a href="javascript:;" class="btn btn-confirm btn-radius">确定</a>
+				</div>
+				<div class="daima">
+				<pre>
+					<code data-language="html">&lt;div class="page">
+	&lt;a class="btn btn-clear btn-radius" href="javascript:;">上一页&lt;/a>
+	&lt;strong>1&lt;/strong>
+	&lt;a class="btn btn-clear btn-radius" href="javascript:;">2&lt;/a>
+	&lt;a class="btn btn-clear btn-radius" href="javascript:;">3&lt;/a>
+	&lt;a class="btn btn-clear btn-radius" href="javascript:;">4&lt;/a>
+	&lt;a class="btn btn-clear btn-radius" href="javascript:;">5&lt;/a>
+	&lt;a class="btn btn-clear btn-radius" href="javascript:;">下一页&lt;/a>
+	&lt;span>共 12 页 第&lt;/span>
+	&lt;input class="text" type="text">
+	&lt;span>页&lt;/span>
+	&lt;a href="javascript:;" class="btn btn-confirm btn-radius">确定&lt;/a>
+&lt;/div></code>
+				</pre>
+				<input type="button" class="btn btn-clear btn-fz" value="复制" />
+				<div class="hide">
+					<div class="page">
+						<a class="btn btn-clear btn-radius" href="javascript:;">上一页</a>
+						<strong>1</strong>
+						<a class="btn btn-clear btn-radius" href="javascript:;">2</a>
+						<a class="btn btn-clear btn-radius" href="javascript:;">3</a>
+						<a class="btn btn-clear btn-radius" href="javascript:;">4</a>
+						<a class="btn btn-clear btn-radius" href="javascript:;">5</a>
+						<a class="btn btn-clear btn-radius" href="javascript:;">下一页</a>
+						<span>共 12 页 第</span>
+						<input class="text" type="text">
+						<span>页</span>
+						<a href="javascript:;" class="btn btn-confirm btn-radius">确定</a>
+					</div>
+				</div>
+				</div>
+
+				<p>文章列表分页:</p>
+				<div class="page">
+					<span>共 12 页</span>
+					<a class="btn btn-clear btn-radius" href="javascript:;">首页</a>
+					<a class="btn btn-clear btn-radius" href="javascript:;">上一页</a>
+					<strong>1</strong>
+					<a class="btn btn-clear btn-radius" href="javascript:;">2</a>
+					<a class="btn btn-clear btn-radius" href="javascript:;">3</a>
+					<a class="btn btn-clear btn-radius" href="javascript:;">4</a>
+					<a class="btn btn-clear btn-radius" href="javascript:;">5</a>
+					<a class="btn btn-clear btn-radius" href="javascript:;">下一页</a>
+					<a class="btn btn-clear btn-radius" href="javascript:;">尾页</a>
+				</div>
+				<div class="daima">
+
+
+				<pre>
+					<code data-language='html'>&lt;div class="page">
+	&lt;span>共 12 页&lt;/span>
+	&lt;a class="btn btn-clear btn-radius" href="javascript:;">首页&lt;/a>
+	&lt;a class="btn btn-clear btn-radius" href="javascript:;">上一页&lt;/a>
+	&lt;strong>1&lt;/strong>
+	&lt;a class="btn btn-clear btn-radius" href="javascript:;">2&lt;/a>
+	&lt;a class="btn btn-clear btn-radius" href="javascript:;">3&lt;/a>
+	&lt;a class="btn btn-clear btn-radius" href="javascript:;">4&lt;/a>
+	&lt;a class="btn btn-clear btn-radius" href="javascript:;">5&lt;/a>
+	&lt;a class="btn btn-clear btn-radius" href="javascript:;">下一页&lt;/a>
+	&lt;a class="btn btn-clear btn-radius" href="javascript:;">尾页&lt;/a>
+&lt;/div></code>
+				</pre>
+				<input type="button" class="btn btn-clear btn-fz" value="复制" />
+					<div class="hide">
+						<div class="page">
+							<span>共 12 页</span>
+							<a class="btn btn-clear btn-radius" href="javascript:;">首页</a>
+							<a class="btn btn-clear btn-radius" href="javascript:;">上一页</a>
+							<strong>1</strong>
+							<a class="btn btn-clear btn-radius" href="javascript:;">2</a>
+							<a class="btn btn-clear btn-radius" href="javascript:;">3</a>
+							<a class="btn btn-clear btn-radius" href="javascript:;">4</a>
+							<a class="btn btn-clear btn-radius" href="javascript:;">5</a>
+							<a class="btn btn-clear btn-radius" href="javascript:;">下一页</a>
+							<a class="btn btn-clear btn-radius" href="javascript:;">尾页</a>
+						</div>
+					</div>
+				</div>
+
+				<h2>面包屑</h2>
+				<div class="breadcrumbs">
+					<span>您现在的位置：</span>
+					<a href="#">首页</a>
+					<span>&gt;</span>
+					<span>交易大厅</span>
+				</div>
+				<p></p>
+				<div class="daima">
+					<pre>
+<code data-language="html"><div class="breadcrumbs">
+<span>您现在的位置：</span>
+<a href="#">首页</a>
+<span>&gt;</span>
+<span>交易大厅</span>
+</div></code>
+					</pre>
+					<input type="button" class="btn btn-clear btn-fz" value="复制" />
+					<div class="hide">
+						<div class="breadcrumbs">
+							<span>您现在的位置：</span>
+							<a href="#">首页</a>
+							<span>&gt;</span>
+							<span>交易大厅</span>
+						</div>
+					</div>
+				</div>
+		
+				<h2>斑马线——隔行换色</h2>
+				<table class="tab">
+					<thead>
+						<tr>
+							<th>品名</th>
+							<th>材质</th>
+							<th>规范</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>高速线材</td>
+							<td>10B21</td>
+							<td>6.5</td>
+						</tr>
+						<tr>
+							<td>高速线材</td>
+							<td>10B21</td>
+							<td>6.5</td>
+						</tr>
+						<tr>
+							<td>高速线材</td>
+							<td>10B21</td>
+							<td>6.5</td>
+						</tr>
+						<tr>
+							<td>高速线材</td>
+							<td>10B21</td>
+							<td>6.5</td>
+						</tr>
+						<tr>
+							<td>高速线材</td>
+							<td>10B21</td>
+							<td>6.5</td>
+						</tr>
+						<tr>
+							<td>高速线材</td>
+							<td>10B21</td>
+							<td>6.5</td>
+						</tr>
+						<tr>
+							<td>高速线材</td>
+							<td>10B21</td>
+							<td>6.5</td>
+						</tr>
+					</tbody>
+				</table>
+				<p></p>
+				<div class="daima">
+					<pre>
+						<code data-language="javascript">$(function()
+{
+	$(".tab tbody tr:even").addClass("even");
+})</code>
+					</pre>
+					<input type="button" class="btn btn-clear btn-fz" value="复制" />
+					<div class="hide">
+							$(function(){$(".tab tbody tr:even").addClass("even");});
+					</div>
+				</div>
+				
+				<h2>tab选项卡</h2>
+				<div class="tabs">
+					<p class="clear"><a class="active" href="javascript:;">最新成交</a><a href="javascript:;">库存查询</a></p>
+					<div class="tab-center act">
+						<table class="tab">
+							<thead>
+								<tr>
+									<th>品名</th>
+									<th>材质</th>
+									<th>规范</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>高速线材</td>
+									<td>10B21</td>
+									<td>6.5</td>
+								</tr>
+								<tr>
+									<td>高速线材</td>
+									<td>10B21</td>
+									<td>6.5</td>
+								</tr>
+								<tr>
+									<td>高速线材</td>
+									<td>10B21</td>
+									<td>6.5</td>
+								</tr>
+								<tr>
+									<td>高速线材</td>
+									<td>10B21</td>
+									<td>6.5</td>
+								</tr>
+								<tr>
+									<td>高速线材</td>
+									<td>10B21</td>
+									<td>6.5</td>
+								</tr>
+								<tr>
+									<td>高速线材</td>
+									<td>10B21</td>
+									<td>6.5</td>
+								</tr>
+								<tr>
+									<td>高速线材</td>
+									<td>10B21</td>
+									<td>6.5</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tab-center">
+						<table class="tab">
+							<thead>
+								<tr>
+									<th>品名一</th>
+									<th>材质一</th>
+									<th>规范一</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>高速线材</td>
+									<td>10B21</td>
+									<td>6.5</td>
+								</tr>
+								<tr>
+									<td>高速线材</td>
+									<td>10B21</td>
+									<td>6.5</td>
+								</tr>
+								<tr>
+									<td>高速线材</td>
+									<td>10B21</td>
+									<td>6.5</td>
+								</tr>
+								<tr>
+									<td>高速线材</td>
+									<td>10B21</td>
+									<td>6.5</td>
+								</tr>
+								<tr>
+									<td>高速线材</td>
+									<td>10B21</td>
+									<td>6.5</td>
+								</tr>
+								<tr>
+									<td>高速线材</td>
+									<td>10B21</td>
+									<td>6.5</td>
+								</tr>
+								<tr>
+									<td>高速线材</td>
+									<td>10B21</td>
+									<td>6.5</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<p></p>
+
+				<div class="daima">
+					<pre>
+					<code data-language="javascript">$(function()
+{
+	$(".tabs").tabs("click");//参数为触发事件。建议用：mouseover click.如果不填写参数默认为mouseover
+})</code>
+					</pre>
+					<input type="button" class="btn btn-clear btn-fz" value="复制" />
+					<div class="hide">
+							$(function()
+							{
+								$(".tabs").tabs("click");//参数为触发事件。建议用：mouseover click.如果不填写参数默认为mouseover
+							})
+					</div>
+				</div>
+			
+
+				<h2>图标</h2>
+				<p>页面会用到的一些小图标。</p>
+				<p>
+					<span class="ico ico-yi"></span>
+					<span class="ico ico-ke"></span>
+					<span class="ico ico-shu"></span>
+					<span class="ico ico-bao"></span>
+					<span class="ico ico-piao"></span>
+					<span class="ico ico-zhi"></span>
+					<span class="ico ico-chen"></span>
+					<span class="ico ico-kun"></span>
+					<span class="ico ico-close"></span>
+					<span class="ico ico-new"></span>
+				</p>
+				<p>
+					<span class="z-ico z-ico-fdj"></span>
+					<span class="z-ico z-ico-yh"></span>
+					<span class="z-ico z-ico-gwc"></span>
+					<span class="z-ico z-ico-dh"></span>
+					<span class="z-ico z-ico-wz"></span>
+					<span class="z-ico z-ico-xyt"></span>
+					<span class="z-ico z-ico-xg"></span>
+				</p>
+
+				<div class="daima">
+					<pre>
+<code data-language="html">&lt;span class="ico ico-yi">&lt;/span>
+&lt;span class="ico ico-ke">&lt;/span>
+&lt;span class="ico ico-shu">&lt;/span>
+&lt;span class="ico ico-bao">&lt;/span>
+&lt;span class="ico ico-piao">&lt;/span>
+&lt;span class="ico ico-zhi">&lt;/span>
+&lt;span class="ico ico-chen">&lt;/span>
+&lt;span class="ico ico-kun">&lt;/span>
+&lt;span class="ico ico-close">&lt;/span>
+&lt;span class="ico ico-new">&lt;/span></code>
+					</pre>
+					<input type="button" class="btn btn-clear btn-fz" value="复制" />
+					<div class="hide">
+						<span class="ico ico-yi"></span>
+						<span class="ico ico-ke"></span>
+						<span class="ico ico-shu"></span>
+						<span class="ico ico-bao"></span>
+						<span class="ico ico-piao"></span>
+						<span class="ico ico-zhi"></span>
+						<span class="ico ico-chen"></span>
+						<span class="ico ico-kun"></span>
+						<span class="ico ico-close"></span>
+						<span class="ico ico-new"></span>
+					</div>
+				</div>
+
+				<h2>弹出窗</h2>
+				<p><a href="javascript:;" id="alert" class="btn btn-confirm">弹窗</a></p>
+				<div class="daima">
+				<pre>
+<code data-language="html">&lt;div class="Alert popContent">
+	&lt;h4>提示&lt;span class="ico ico-close popClose">&lt;/span>&lt;/h4>
+	&lt;div class="A-center">
+		&lt;p>保存成功，5条信息已保存&lt;/p>
+		&lt;p class="A-right">
+			&lt;input class="btn btn-confirm btn-radius" type="button" value="确定"> 
+			&lt;input class="btn btn-clear btn-radius popClose" type="button" value="取消">
+		&lt;/p>
+	&lt;/div>
+&lt;/div></code>
+
+<code data-language="javascript">$(function()
+{
+/*
+ * Jumovepop弹窗层插件
+ *
+ * 这是一个弹窗层插件，可以制作可移动的弹出层。
+ * 下面它的调用方法
+ * $("#alert").Jumovepop({move:true,follow:true,bg:true,close:true,bgcss:{opacity:0.1},boxcss:{}})
+ *
+ * FunctionJson={move:true,follow:true,bg:true,bgcss:{opacity:0.1}}
+ * move:目标是否可拖拽,参数true or false
+ * follow:目标是否随滚动条滚动或窗口大小改变时自动居中,参数参数true or false
+ * close:是否显示关闭按钮(diaplay:none&block),按钮trigger仍然可以使用
+ * bg:是否有透明背景,参数true or false
+ * bgcss:自定义bg的css样式,参数json格式。例如{background:"red",opacity:0.1},可随意添加
+ */
+	$("#alert").Jumovepop(
+		{move:false,
+		follow:true,
+		bg:true,
+		close:true,
+		bgcss:{opacity:0.6},
+		boxcss:{},
+		prent:$(".popContent")
+	})
+})</code>
+				</pre>
+					<input type="button" class="btn btn-clear btn-fz" value="复制" />
+				<div class="hide">
+					$(function()
+						{
+						/*
+						 * Jumovepop弹窗层插件
+						 *
+						 * 这是一个弹窗层插件，可以制作可移动的弹出层。
+						 * 下面它的调用方法
+						 * $("#alert").Jumovepop({move:true,follow:true,bg:true,close:true,bgcss:{opacity:0.1},boxcss:{}})
+						 *
+						 * FunctionJson={move:true,follow:true,bg:true,bgcss:{opacity:0.1}}
+						 * move:目标是否可拖拽,参数true or false
+						 * follow:目标是否随滚动条滚动或窗口大小改变时自动居中,参数参数true or false
+						 * close:是否显示关闭按钮(diaplay:none&block),按钮trigger仍然可以使用
+						 * bg:是否有透明背景,参数true or false
+						 * bgcss:自定义bg的css样式,参数json格式。例如{background:"red",opacity:0.1},可随意添加
+						 */
+							$("#alert").Jumovepop(
+								{move:false,
+								follow:true,
+								bg:true,
+								close:true,
+								bgcss:{opacity:0.6},
+								boxcss:{},
+								prent:$(".popContent")
+							})
+						})
+				</div>
+				</div>
+				<h2>加载中</h2>
+				<p><a href="javascript:;" id="load" class="btn btn-confirm">加载</a></p>
+				<div class="daima">
+<pre>
+<code data-language="javascript">$(function()
+{
+/*
+ 遮罩和弹出层类似 需要和程序配合加载完成去掉
+ */
+	$("#load").Jumovepop(
+		{move:false,
+		follow:true,
+		bg:true,
+		close:true,
+		bgcss:{opacity:0.6},
+		boxcss:{},
+		prent:$(".loading")
+	})
+})</code></pre>
+				<input type="button" class="btn btn-clear btn-fz" value="复制" />
+				<div class="hide">
+					$(function()
+					{
+					/*
+					 遮罩和弹出层类似 需要和程序配合加载完成去掉
+					 */
+						$("#load").Jumovepop(
+							{move:false,
+							follow:true,
+							bg:true,
+							close:true,
+							bgcss:{opacity:0.6},
+							boxcss:{},
+							prent:$(".loading")
+						})
+					})
+				</div>
+			</div>
+			<h2>输入反馈</h2>
+			<div>
+				<p class="import import-normal"><span></span>正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常正常</p>
+				<p class="import import-remind"><span></span>提醒</p>
+				<p class="import import-warning"><span></span>警告</p>
+				<p class="import import-error"><span></span>错误</p>
+			</div>
+			<div class="daima">
+				<pre>
+					<code data-language="html">&lt;p class="import import-normal">正常&lt;/p>
+&lt;p class="import import-remind">提醒&lt;/p>
+&lt;p class="import import-warning">警告&lt;/p>
+&lt;p class="import import-error">错误&lt;/p></code>
+				</pre>
+				<input type="button" class="btn btn-clear btn-fz" value="复制" />
+				<div class="hide">
+					<p class="import import-normal"><span></span>正常</p>
+					<p class="import import-remind"><span></span>提醒</p>
+					<p class="import import-warning"><span></span>警告</p>
+					<p class="import import-error"><span></span>错误</p>
+				</div>
+			</div>
+				<h2>字体</h2>
+				<p>字体大小</p>
+				<p>
+					<span class="fong-h5">12号宋体加粗</span><br />
+					<span class="fong-h4">14号宋体加粗</span><br />
+					<span class="fong-h3">16号微软雅黑加粗</span><br />
+					<span class="fong-h2">22号微软雅黑加粗</span><br />
+					<span class="fong-h1">28号微软雅黑加粗</span><br />
+				</p>
+				<div class="daima">
+
+<pre>
+<code data-language="html">&lt;span class="fong-h5">12号宋体加粗&lt;/span>
+&lt;span class="fong-h4">14号宋体加粗&lt;/span>
+&lt;span class="fong-h3">16号微软雅黑加粗&lt;/span>
+&lt;span class="fong-h2">22号微软雅黑加粗&lt;/span>
+&lt;span class="fong-h1">28号微软雅黑加粗&lt;/span></code>
+				</pre>
+				<input type="button" class="btn btn-clear btn-fz" value="复制" />
+					<div class="hide">
+						<span class="fong-h5">12号宋体加粗</span><br />
+						<span class="fong-h4">14号宋体加粗</span><br />
+						<span class="fong-h3">16号微软雅黑加粗</span><br />
+						<span class="fong-h2">22号微软雅黑加粗</span><br />
+						<span class="fong-h1">28号微软雅黑加粗</span><br />
+					</div>
+				</div>
+				
+			</div>
+
+
+			<div class="right">
+				<dl>
+					<dt class="act"><a href="javascript:;">按钮</a></dt>
+					<!--<dd><a href="javascript:;">预定义按钮</a></dd>
+					<dd><a href="javascript:;">按钮类</a></dd>-->
+				</dl>
+				<dl>
+					<dt><a href="javascript:;">表单</a></dt>
+				</dl>
+				<dl>
+					<dt><a href="javascript:;">分页</a></dt>
+				</dl>
+				<dl>
+					<dt><a href="javascript:;">面包屑</a></dt>
+				</dl>
+				<dl>
+					<dt><a href="javascript:;">隔行换色</a></dt>
+				</dl>
+				<dl>
+					<dt><a href="javascript:;">tab选项卡</a></dt>
+				</dl>
+				<dl>
+					<dt><a href="javascript:;">图标</a></dt>
+				</dl>
+				<dl>
+					<dt><a href="javascript:;">弹出窗</a></dt>
+				</dl>
+				<dl>
+					<dt><a href="javascript:;">加载</a></dt>
+				</dl>
+				<dl>
+					<dt><a href="javascript:;">输入反馈</a></dt>
+				</dl>
+				<dl>
+					<dt><a href="javascript:;">字体</a></dt>
+				</dl>
+			</div>
+		</div>
+	</div>
+
+	<!--弹出层布局-->
+	<div class="Alert popContent">
+		<h4>提示<span class="ico ico-close popClose"></span></h4>
+		<div class="A-center">
+			<p>保存成功，5条信息已保存!</p>
+			<p class="A-right"><input class="btn btn-confirm btn-radius" type="button" value="确定"> <input class="btn btn-clear btn-radius popClose" type="button" value="取消"></p>
+		</div>
+	</div>
+	<div class="loading">
+		<div class="A-center">
+			<span class="ico ico-close popClose"></span>
+			<img src="images/big-load.gif" alt="">
+		</div>
+	</div>
+</html>

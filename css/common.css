@@ -1,0 +1,126 @@
+/*清除默认样式*/
+body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, img, div, dl, dt, dd, table, tr, td, input {margin: 0;padding: 0;}
+img {border:none;}
+li {list-style:none;}
+body{ font-family:Tahoma, Helvetica, Arial,'微软雅黑';}
+.clear{zoom:1;}
+.clear:after{content:"";display:block;clear:both;}
+.bottom{overflow: visible;}
+
+/*按钮类*/
+.btn{ display: inline-block; zoom:1; text-decoration: none; line-height: 1.4;padding: 2px 5px; border-radius: 4px; background: no-repeat; border: 1px solid #fff;  cursor:pointer; vertical-align:middle; font-size: 12px;}
+/*按钮预定义样式*/
+.btn-searsh{ background: #ffa734; color: #fff;border-color:#fda251;}
+.btn-searsh:hover{ background:#f46e1d;border-color:#fca353;}
+.btn-confirm{ background: #6cbcf2; color: #fff;border-color:#78b8ee;}
+.btn-confirm:hover{ background:#3e98d4;border-color:#55a5e4;}
+.btn-clear{ background: #fefefe; border-color:#dbdbdb; color: #333;}
+.btn-clear:hover{ background: #ebebeb; border-color:#d8d8d8;}
+.btn-radius{ border-radius: 0px;}
+.z-empty{width: 48px; height: 24px; line-height: 24px; border:1px solid #d1d5d9; font-size: 12px; display: inline-block; border-radius: 2px; text-decoration: none;}
+.z-empty-normal{ background: #f3f3f3; color: #505050; }
+.z-empty-hover,.z-empty-normal:hover{ background: #fff; color: #505050;}
+.z-empty-disable{ background: #f3f3f3; color: #b1b1b1; cursor: no-drop;}
+.z-define{width: 48px; height: 24px; line-height: 24px; border:1px solid #2a3641; font-size: 12px; display: inline-block; border-radius: 2px; text-decoration: none;}
+.z-define-normal{ background: #475a6c; color: #fff; }
+.z-define-hover,.z-define-normal:hover{ background: #4476a6; color: #fff;}
+.z-define-disable{ background: #919496; color: #cdcdcd; border-color:#305981; cursor: no-drop;}
+
+.z-buy {width: 48px; height: 24px; line-height: 24px; font-size: 12px; display: inline-block; border-radius: 2px; text-decoration: none;}
+.z-buy-normal{ background: #ff6f10; color: #fff; }
+.z-buy-hover,.z-buy-normal:hover{ background: #ff4700; color: #fff;}
+.z-buy-disable{ background: #bebebe; color: #fff; cursor: no-drop;}
+.z-close {line-height: 24px; font-size: 12px; display: inline-block; border-radius: 2px; text-decoration: none; width: 18px; line-height: 18px;vertical-align: middle; }
+.z-close-normal{ background: #ff6f10; color: #fff; }
+.z-close-hover,.z-close-normal:hover{ background: #ff4700; color: #fff;}
+.z_close_ico{ background: url(../images/ico.png) no-repeat  -170px 0px; width: 8px; height: 8px; display: inline-block; zoom: 1; line-height: 8px;}
+
+.z-add {line-height: 24px; font-size: 12px; display: inline-block; border-radius: 2px; text-decoration: none; width: 18px; line-height: 18px;vertical-align: middle; }
+.z-add-normal{ background: #a5a8aa; color: #fff; }
+.z-add-hover,.z-add-normal:hover{ background: #545e67; color: #fff;}
+.z-add-disable{ background: #cfd0d1; color: #fff; cursor: no-drop;}
+.z-add-ico{ background: url(../images/ico.png) no-repeat  -159px 0px; width: 8px; height: 8px; display: inline-block; zoom: 1; line-height: 8px;}
+
+
+/*分页*/
+.page{ overflow: hidden; text-align: center; padding:10px 0;font-size:12px;}
+.page span,.page input,.page strong,.page a{ display: inline-block; margin: 0 1px;}
+.page .btn-clear{ padding: 4px 8px; color:#3498db;}
+.page .btn:hover{ text-decoration: underline;}
+
+.page strong{ color: #ffc600; padding: 0px 4px; font-size: 14px}
+.page .text{ width:30px; height: 22px; border: 1px solid #ccc;vertical-align: middle; text-align: center;}
+
+/*面包屑导航*/
+.breadcrumbs{ height: 24px; line-height: 24px; font-size: 12px;}
+.breadcrumbs span{ display: inline-block;}
+.breadcrumbs a{ color: #3498db; text-decoration: none;}
+
+/*隔行换色*/
+
+/*tab切换*/
+.tabs p{ margin-bottom: 0px;}
+.tabs p a{ float: left; padding: 0 10px; font-weight: bold; color: #2587c9; height: 24px; line-height: 24px; border-radius: 5px 5px 0px 0px ;text-decoration: none; position: relative;top:1px;}
+.tabs p a.active{border:1px solid #2587c9; border-bottom-color:#fff; }
+.tabs .tab-center{ border:1px solid #2587c9; display: none; padding-top: 10px;}
+.tabs .act{ display: block;}
+
+/*图标*/
+.ico{ height: 14px; display: inline-block; overflow: hidden; width: 14px; background: url(../images/ico.png) no-repeat left top;}
+
+.ico-yi{background-position:-105px 0px; width: 36px;}
+.ico-ke{background-position:-105px -16px;width: 36px;}
+.ico-bao{background-position:0px 0px ;}
+.ico-zhi{background-position:-15px 0px ;}
+.ico-chen{background-position: -30px 0px;}
+.ico-kun{background-position:-45px 0px ;}
+.ico-piao{background-position:-60px 0px ;}
+.ico-shu{background-position:-75px 0px ;}
+.ico-close{background-position:-142px 0px ; width: 16px; height: 16px;}
+.ico-new{ background-position:0px -15px; width: 22px; }
+
+.z-ico{display: inline-block; overflow: hidden; background: url(../images/ico.png) no-repeat left top;vertical-align: middle;}
+.z-ico-fdj{ width: 20px; height: 20px; background-position: -4px -74px;}
+.z-ico-yh{width:20px; height:22px ;background-position:-60px -72px;}
+.z-ico-gwc{width:24px; height:22px ;background-position:-113px -72px ;}
+.z-ico-dh{width:13px; height:14px ;background-position:-191px -77px;}
+.z-ico-wz{width:12px; height:13px ;background-position:-246px -78px ;}
+.z-ico-xyt{width:13px; height:14px ;background-position:-299px -80px;}
+.z-ico-xg{width:11px; height:14px ;background-position:-343px -80px;}
+
+
+.popUp{ z-index: 99;}
+.Alert{ width: 355px; display: none; position: absolute; z-index: 100;}
+.Alert h4{ text-align: center; position: relative; height: 32px; line-height: 32px; font-family: "微软雅黑"; color: #fff; background: #2c81ba; border-radius:5px 5px  0px 0px; }
+.Alert h4 span{ position: absolute; top: 9px; cursor: pointer; right: 10px;}
+.Alert .A-center{ border: 1px solid #cacaca; padding: 10px 0 ; background: #fff}
+.Alert .A-center p{ line-height: 30px; padding: 0 10px; font-size: 12px;}
+.Alert .A-right{ text-align: right;}
+
+.loading{ width: 300px; height: 201px; display: none;position: absolute; z-index: 100;}
+p.import{ overflow: hidden;  border-radius: 3px;position: relative; line-height: 28px; padding-left: 34px; font-size: 12px; color: #666;}
+p.import span{display: block; height: 17px; width: 17px; position:absolute; top: 50%; margin-top: -8px; left: 8px;}
+.import-normal{background: #d0ffcc; }
+.import-normal span{background: #d0ffcc url(../images/ico.png) -384px 0px no-repeat; }
+.import-remind{background: #ffffc5;}
+.import-remind span{background: #ffffc5 url(../images/ico.png) -384px -26px no-repeat;}
+.import-warning{background: #ffffc5;}
+.import-warning span{background: #ffffc5 url(../images/ico.png) -384px -48px no-repeat;}
+.import-error{background: #eea1a1;}
+.import-error span{background: #eea1a1 url(../images/ico.png) -384px -72px no-repeat;}
+
+/*表单*/
+.form-control{}
+.form-control tr{ vertical-align:middle;}
+.form-control input.text{ height: 24px; border:1px solid #ddd; width: 240px; padding:0 10px;}
+.form-control span{ display: inline-block;}
+.form-control textarea { width: 400px; border:1px solid #ddd;}
+
+
+/*字体*/
+.fong-h5{font-size: 12px; font-family: "宋体"; font-weight: bold;}
+.fong-h4{font-size: 14px; font-family: "宋体"; font-weight: bold;}
+.fong-h3{font-size: 16px; font-family: "微软雅黑"; font-weight: bold;}
+.fong-h2{font-size: 22px; font-family: "微软雅黑"; font-weight: bold;}
+.fong-h1{font-size: 28px; font-family: "微软雅黑"; font-weight: bold;}
+
