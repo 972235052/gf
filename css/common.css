@@ -87,7 +87,9 @@ body{ font-family:Tahoma, Helvetica, Arial,'微软雅黑';}
 .z-ico-wz{width:12px; height:13px ;background-position:-246px -78px ;}
 .z-ico-xyt{width:13px; height:14px ;background-position:-299px -80px;}
 .z-ico-xg{width:11px; height:14px ;background-position:-343px -80px;}
-
+.z-ico-sj{width:16px; height:25px ;background-position:0px -96px;}
+.z-ico-yx{width:22px; height:18px ;background-position:0px -124px;}
+.z-ico-xl{ width: 16px; height: 17px; background-position: -62px -96px;}
 
 .popUp{ z-index: 99;}
 .Alert{ width: 355px; display: none; position: absolute; z-index: 100;}
