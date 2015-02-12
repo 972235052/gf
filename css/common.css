@@ -90,6 +90,22 @@ body{ font-family:Tahoma, Helvetica, Arial,'微软雅黑';}
 .z-ico-sj{width:16px; height:25px ;background-position:0px -96px;}
 .z-ico-yx{width:22px; height:18px ;background-position:0px -124px;}
 .z-ico-xl{ width: 16px; height: 17px; background-position: -62px -96px;}
+.z-ico-nl{ width:59px; height:61px; background-position:0px -144px;}
+.z-ico-pj{ width:59px; height:59px; background-position:-83px -144px;}
+.z-ico-cx{ width:59px; height:59px; background-position:-167px -144px;}
+.z-ico-jp{ width:59px; height:61px; background-position:-246px -146px;}
+.z-ico-yp{ width:59px; height:61px; background-position:-327px -146px;}
+.z-ico-xjp{ width:20px; height:20px; background-position:-400px -176px;}
+.z-ico-xyp{ width:20px; height:20px; background-position:-442px -176px;}
+.z-ico-hb{ width:38px; height:44px; background-position:0px -206px;}
+.z-ico-cz{ width:49px; height:41px; background-position:-63px -206px;}
+.z-ico-wh{ width:45px; height:45px; background-position:-135px -206px;}
+
+p#pshopStatusCd{ background: url(../images/ico.png) no-repeat -237px -223px; float: left; width: 120px; height : 26px;}
+p#pshopStatusCd.act{ background-position: -383 -223px;}
+p#pshopStatusCd .z-sales-shop-start{ float: left; width:74px; height: 26px; cursor: default;}
+p#pshopStatusCd .z-sales-shop-close{ float: left; width:46px; height: 26px;}
+
 
 .popUp{ z-index: 99;}
 .Alert{ width: 355px; display: none; position: absolute; z-index: 100;}
@@ -114,8 +130,9 @@ p.import span{display: block; height: 17px; width: 17px; position:absolute; top:
 /*表单*/
 .form-control{}
 .form-control tr{ vertical-align:middle;}
+.form-control input{vertical-align: middle;}
 .form-control input.text{ height: 24px; border:1px solid #ddd; width: 240px; padding:0 10px;}
-.form-control span{ display: inline-block;}
+.form-control span{ display: inline-block;vertical-align: middle;}
 .form-control textarea { width: 400px; border:1px solid #ddd;}
 
 
