@@ -101,10 +101,10 @@ body{ font-family:Tahoma, Helvetica, Arial,'微软雅黑';}
 .z-ico-cz{ width:49px; height:41px; background-position:-63px -206px;}
 .z-ico-wh{ width:45px; height:45px; background-position:-135px -206px;}
 
-p#pshopStatusCd{ background: url(../images/ico.png) no-repeat -237px -223px; float: left; width: 120px; height : 26px;}
-p#pshopStatusCd.act{ background-position: -383 -223px;}
-p#pshopStatusCd .z-sales-shop-start{ float: left; width:74px; height: 26px; cursor: default;}
-p#pshopStatusCd .z-sales-shop-close{ float: left; width:46px; height: 26px;}
+p.pshopStatusCd{ background: url(../images/ico.png) no-repeat -237px -223px; float: left; width: 120px; height : 26px;}
+p.pshopStatusCd_act{ background-position: -383px -223px;}
+p.pshopStatusCd .z-sales-shop-start{ float: left; width:74px; height: 26px; cursor: default;}
+p.pshopStatusCd .z-sales-shop-close{ float: left; width:46px; height: 26px;}
 
 
 .popUp{ z-index: 99;}
@@ -143,3 +143,39 @@ p.import span{display: block; height: 17px; width: 17px; position:absolute; top:
 .fong-h2{font-size: 22px; font-family: "微软雅黑"; font-weight: bold;}
 .fong-h1{font-size: 28px; font-family: "微软雅黑"; font-weight: bold;}
 
+
+/*交易大厅分页*/
+.z-page{ padding-top: 20px; padding-bottom:20px;}
+.z-page p{overflow: hidden;}
+.z-page span{width:28px; height: 28px; float: left; line-height: 28px; text-align: center;color:#0072dd; border-radius: 1px; border: 1px solid #eff1f3; margin-left: 5px;}
+.z-page a{width:28px; height: 28px; float: left; line-height: 28px; text-align: center;color:#0072dd; border-radius: 1px; border: 1px solid #eff1f3; background: #f6f6f6; text-decoration: none;color: #919191; font-size: 12px; margin-left: 5px;}
+.z-page a.z-start{ background:#f6f6f6 url(../images/z_start.png) no-repeat center;}
+.z-page a.z-up{ background:#f6f6f6 url(../images/z_up.png) no-repeat center;}
+.z-page a.z-next{ background:#f6f6f6 url(../images/z_next.png) no-repeat center;}
+.z-page a.z-end{ background:#f6f6f6 url(../images/z_end.png) no-repeat center;}
+
+.z-nav{ height: 44px;}
+.z-nav ul{}
+.z-nav ul li a{ font-size: 16px;}
+.z-nav ul li.nav_li{ float: left; height: 44px; line-height: 44px; font-size: 16px; color: #fff; background: url(../images/nav_bg.png) repeat-x 0 -45px; width: 130px;}
+.z-nav ul li.act{background: url(../images/nav_bg.png) repeat-x 0 0px;}
+.z-nav ul li.last{float: left; height: 44px; line-height: 44px; font-size: 16px; color: #fff;  background:none; width: 159px; }
+.z-nav ul li.last img{ display: block;}
+.z-nav ul li.first_act{float: left; height: 44px; line-height: 44px; font-size: 16px; color: #fff; background: url(../images/nav_jydt.png) no-repeat top left; width: 191px;}
+.z-nav ul li.first{float: left; height: 44px; line-height: 44px; font-size: 16px; color: #fff;  background: url(../images/nav_jydt.png) no-repeat bottom left; width: 191px;}
+.z-nav ul li.first_act{float: left; height: 44px; line-height: 44px; font-size: 16px; color: #fff; background: url(../images/nav_jydt.png) no-repeat top left; width: 191px;}
+.z-nav ul li a.li_link{ color: #fff; text-align: center; width: 100%; display: block; text-decoration: none; height: 44px; background: url(../images/nav_bg.png) no-repeat 0 -88px;}
+.z-nav ul li.first a.li_link,.z-nav ul li .last a.li_link,.z-nav ul li.first_act a.li_link{ background: none;}
+.z-nav ul li.first_act .z-sort{ display: block;}
+.z-nav ul li.last{ background: #34b743; border-radius: 0 2px 0px 0px; position: relative;}
+.z-nav ul li.last a{ display: block; position: relative; z-index: 2;text-decoration: none; height: 44px; text-align: center; color: #fff;}
+.z-nav ul li.last a:hover{ text-decoration: none; }
+.z-nav ul li.last a em{background: url(../images/new_xsj.png) no-repeat; position: absolute; top: 20px; right: 26px; width: 10px; height: 6px; }
+.z-nav ul li.last a span{ display: none; position: absolute; border:5px solid #f0f0f0; border-top-color:#34b743; width:0px; height: 0px; bottom: -10px; left: 75px;} 
+.z-nav ul li.last div{ display: none; position:  absolute; top: 44px;z-index: 1; padding: 10px 0px; left: 0px; background: #f0f0f0; width: 159px;}
+.z-nav ul li.last div p{ height: 26px; line-height: 26px; }
+.z-nav ul li.last div p a{ font-size: 12px; color: #47596b; height: 26px; line-height: 26px; display: block; text-align: center;}
+.z-nav ul li.last div p a:hover{ background: #bfc4c9;}
+.z-nav ul li.last_act a span{ display: block; }
+.z-nav ul li.last_act a em{background: url(../images/new_xsj.png) no-repeat bottom left; position: absolute; top: 20px; right: 26px; width: 10px; height: 6px; }
+.z-nav ul li.last_act div{ display: block; }

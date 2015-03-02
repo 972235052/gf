@@ -6,10 +6,10 @@ body{background: #fff}
 #synopsis h1{ margin: 0 100px; font-family: "微软雅黑"; font-size: 26px; padding-top: 10px; height: 50px; line-height: 50px; font-weight: normal;}
 #synopsis p{ margin: 0 100px; height: 36px; line-height: 36px; padding-bottom: 10px; font-size: 14px; }
 
-#center{ margin: 0 100px; position: relative;margin-top: 20px;}
+#center{ margin: 0 50px; position: relative;margin-top: 20px;}
 #center .left{  margin-right: 200px;}
 #center .left{overflow: hidden;}
-#center .right{ position: fixed; right: 100px; top: 140px; width: 180px;}
+#center .right{ position: fixed; right: 20px; top: 140px; width: 180px;}
 #center .right dl{ font-size: 14px; font-family: "微软雅黑";}
 #center .right dt{ text-indent: 10px; font-size: 16px;}
 #center .right dd{ text-indent: 30px;}
