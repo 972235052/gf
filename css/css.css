@@ -1,14 +1,20 @@
-*{ margin: 0px; padding: 0px;}
-li{ list-style: none;}
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,img,div,dl,dt,dd,table,tr,td,input{ margin:0;padding:0;}
+img{ border:none;}
+body { font-size:12px; font-family:"微软雅黑",Tahoma, Helvetica, Arial, simsun; }
+em{ font-style: normal;}
+li{list-style: none;}
+a{ outline: none;}
+.clear{zoom:1;}
+.clear:after{content:"";display:block;clear:both;}
+
 body{background: #fff}
 #box{ padding-bottom: 50px; min-width: 800px;}
 #synopsis{ background: #3498db; color: #fff;}
-#synopsis h1{ margin: 0 100px; font-family: "微软雅黑"; font-size: 26px; padding-top: 10px; height: 50px; line-height: 50px; font-weight: normal;}
-#synopsis p{ margin: 0 100px; height: 36px; line-height: 36px; padding-bottom: 10px; font-size: 14px; }
+#synopsis h1{ margin: 0 50px; font-family: "微软雅黑"; font-size: 26px; padding-top: 10px; height: 50px; line-height: 50px; font-weight: normal;}
+#synopsis p{ margin: 0 50px; height: 36px; line-height: 36px; padding-bottom: 10px; font-size: 14px; }
 
 #center{ margin: 0 50px; position: relative;margin-top: 20px;}
 #center .left{  margin-right: 200px;}
-#center .left{overflow: hidden;}
 #center .right{ position: fixed; right: 20px; top: 140px; width: 180px;}
 #center .right dl{ font-size: 14px; font-family: "微软雅黑";}
 #center .right dt{ text-indent: 10px; font-size: 16px;}
@@ -17,7 +23,7 @@ body{background: #fff}
 
 #center .left h2{ height: 34px; font-size: 22px; font-weight: normal; border-bottom: 1px solid #ccc; font-family: "微软雅黑"; line-height: 34px; margin-bottom: 10px;}
 .left p{ font-size: 14px; line-height: 34px;margin-bottom: 10px;}
-#center .left h3{ height: 34px; font-size: 20px; font-weight: normal; font-family: "微软雅黑"; line-height: 34px; margin-bottom: 10px;}
+.left h3{ height: 34px; font-size: 20px; font-weight: normal; font-family: "微软雅黑"; line-height: 34px; margin-bottom: 10px;}
 
 .tab{ width: 100%; border-collapse: collapse; }
 .tab th,.tab td{ height: 30px; line-height: 30px;text-align: center;}
@@ -54,3 +60,5 @@ pre .regexp {color: #009926}
 .box-table th{ font-weight: normal; color: #b1b1b1; font-size: 12px;}
 .box-table td{ text-align: center; padding: 10px 0px;}
 
+.tishi{ width: 968px; height: 642px; margin-bottom: 50px;}
+.tishi .z-tishi{ width: 968px; height: 642px; background: #666666;}

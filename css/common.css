@@ -1,8 +1,10 @@
 /*清除默认样式*/
-body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, img, div, dl, dt, dd, table, tr, td, input {margin: 0;padding: 0;}
-img {border:none;}
-li {list-style:none;}
-body{ font-family:Tahoma, Helvetica, Arial,'微软雅黑';}
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,img,div,dl,dt,dd,table,tr,td,input{ margin:0;padding:0;}
+img{ border:none;}
+body { font-size:12px; font-family:"微软雅黑",Tahoma, Helvetica, Arial, simsun; }
+em{ font-style: normal;}
+li{list-style: none;}
+a{ outline: none;}
 .clear{zoom:1;}
 .clear:after{content:"";display:block;clear:both;}
 .bottom{overflow: visible;}
@@ -178,4 +180,46 @@ p.import span{display: block; height: 17px; width: 17px; position:absolute; top:
 .z-nav ul li.last div p a:hover{ background: #bfc4c9;}
 .z-nav ul li.last_act a span{ display: block; }
 .z-nav ul li.last_act a em{background: url(../images/new_xsj.png) no-repeat bottom left; position: absolute; top: 20px; right: 26px; width: 10px; height: 6px; }
-.z-nav ul li.last_act div{ display: block; }
+.z-nav ul li.last_act div{ display: block;}
+
+.z-nav .z-sort{ display: none;}
+.z-sort{ width: 191px; float: left; position: relative; z-index: 1; }
+.z-sort ul.sort-list{ background: #1982e0;  }
+.sort-li{ position: relative;  float: left; width: 191px; height: 69px; line-height: 38px; border-bottom: 1px solid #479be6;}
+.sort-li h3{ font-weight: normal; height: 69px !important; padding-left: 22px; overflow: hidden; color: #8cc1f0; font-size: 16px;}
+.sort-li h3 span{ font-family: "Tahoma"; width: 40px; float: left; font-size: 26px;}
+.sort-li h3 a{  color: #fff; text-decoration: none;}
+.sort-li h3 .sort-qut{ float: left;font-family: "微软雅黑"; width: 120px;}
+.sort-li h3 .sort-qut strong{ height: 30px; line-height: 30px; font-weight: normal; font-size: 16px; display: block;}
+.sort-li h3 .sort-qut em{ display: block; line-height: 16px; font-size: 12px;}
+.z-sort li.act h3 a{ color: #007ae9;}
+.z-sort li.act h3{ background: #fff; position: relative; left: 1px; padding-left: 21px;}
+.z-sort li.act .show{ display: block;}
+.z-sort .show{ display: none; position: absolute; left: 191px; width: 809px; background: #fff; min-height: 280px; background: #fff; top: 0px;}
+.z-sort .show ul{ width: 578px; padding-top: 10px;  }
+.z-sort .show ul li span ,.z-sort .show ul li em{ float: left;}
+.z-sort .show ul li span { width: 72px; padding-right: 6px; text-align: right; font-size: 12px; color: #8cc1f0;}
+.z-sort .show ul li em{ float: left; width: 485px;}
+.z-sort .show ul li{ line-height: 30px; padding-left: 15px; margin-bottom: 10px; overflow: hidden;}
+.z-sort .show ul li a{ display: inline-block;font-size: 12px; margin-right: 28px; color: #45484b; text-decoration: none;}
+.z-sort .show .ad{ position: absolute; right:  0px; top: 0px; width: 230px; height: 280px; overflow: hidden;}
+.z-sort .show .ad a,.z-sort .show .ad a img{ display: block;}
+.z-sort .show .ad a { margin-bottom: 3px;}
+.z-sort .show .ad .close{ position: absolute;  background: url(../images/ico.png) no-repeat -112px -74px; cursor: pointer; right: 15px; top: 15px;}
+.z-sort .show .yy{ background: url(../images/left_yy.png) no-repeat right top; width: 809px; position: absolute; bottom: -20px; height: 20px;}
+
+.product-list{ margin-bottom: 30px; width: 260px;}
+.product-list .product-tit{ border-bottom:2px solid #939ca5; overflow: hidden; height: 32px; line-height: 32px;}
+.product-list .product-tit h3{ float: left; width: 100px; height: 32px; line-height: 32px; background: url(../images/z_ico.png) no-repeat 0px -74px; text-indent: 16px; font-size: 14px; color: #fff; font-weight: normal; margin-right: 20px;}
+.product-list span{ width: 56px; float: left;}
+.product-list em{ width: 70px; text-align: right; padding-right:12px; float: right;}
+.product-list .list{ padding-top: 1px; height: 280px; overflow: hidden; position: relative;}
+.product-list .list ul{ position: absolute;width: 260px;}
+.product-list .list li{ margin-top: 1px; overflow: hidden; height: 34px; background: #f7f7f7; line-height: 34px;}
+.product-list .list li.act{ background: #fff;}
+.product-list .list li a{ float: left; width: 120px; text-indent: 16px; color: #2590f7; font-size: 14px; text-decoration: none;}
+.product-list .list li a:hover{ text-decoration:underline;}
+.product-list .list li strong{ font-weight: normal; float: left; width: 120px; text-indent: 16px; color: #2590f7; font-size: 14px; text-decoration: none;}
+
+.product-list .list span{ color: #474747;}
+.product-list .list em{ color: #949494;}

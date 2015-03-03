@@ -10,6 +10,7 @@
 	<script src="js/rainbow-custom.min.js"></script>
 	<script type="text/javascript" src="js/jquery.zclip.js"></script>
 	<script type="text/javascript">
+
 	var arrs;
 		$(function()
 		{
@@ -77,8 +78,79 @@
 					$(window).scrollTop($(".left h2").eq(i).get(0).offsetTop+parseInt($("#synopsis").height()))
 				})
 			})
-			
+
+			 $(".z-nav .last").hover(function(){
+		        $(this).addClass('last_act')
+		      },function(){
+		        $(this).removeClass('last_act')
+		      })
+			$(".z-nav>ul>li").each(function(i){
+				$(this).hover(function(){
+					if(i==0){
+						$(this).attr("class","first_act")
+						$(".sort").show();
+					}else if(i==$(".nav>ul>li").length-1){
+					}else if($(this).find("a").length){
+						$(this).addClass("act")
+					}
+				},function(){
+					if(i==0){
+						$(".sort").hide();
+						$(this).attr("class","first")
+					}else if(i==$(".nav>ul>li").length-1){
+					}else if($(this).find("a").length){
+						$(this).removeClass("act")
+					}
+				})
+			})
+			//楼层显示隐藏
+			$(".sort-li").hover(function(){
+				$(this).addClass("act")
+				$(this).find(".show").css("top",$(this).index()*-70)
+			},function(){
+				$(this).removeClass("act")
+			})
+
+			$(".product-list .list ul").each(function(i){
+				floors_roll($(".product-list .list ul").eq(i),8,35);
+			})
 		})
+		
+		function floors_roll(obj,_lenth,_height){
+			var obj_li=obj.find("li"),
+				obj_par=obj.parent(),
+				time='',
+				index=0;
+
+			if(obj_li.length>_lenth){
+				obj.html(obj.html()+obj.html())
+				obj_li=obj.find("li");
+				time=setInterval(function(){
+						roll();
+					},3000)
+				obj_par.hover(function(){
+					clearInterval(time)
+				},function(){
+					time=setInterval(function(){
+						roll();
+					},3000)	
+				})
+				function roll(){
+					if(index==obj.find("li").length/2){
+						index=0;
+						obj.css({"top":"0"})	
+					}
+					index++;
+					obj.animate({"top":-index*_height})
+				}
+				
+			};
+			obj_li.hover(function(i){
+				$(this).addClass("act");
+			},function(){
+				$(this).removeClass("act");
+			})
+		}
 	</script>
 </head>
 <body>
@@ -87,7 +159,7 @@
 	<div id='box'>
 		<div id="synopsis">
 			<h1>全局样式</h1>
-			<p>设置全局样式，让网站风格统一。支持ie8以上ie系列浏览器，部分样式因为是css3的ie8不支持，如圆角等。</p>
+			<p>设置全局样式，让网站风格统一。</p>
 		</div>
 		<div id="center">
 			<div class="left">
@@ -895,252 +967,361 @@
 						<span class="fong-h1">28号微软雅黑加粗</span><br />
 					</div>
 				</div>
-				<h2>组件</h2>
-				
+				<h2>控件</h2>
+				<p>导航</p>
+				<div class="center">
+					<div class="z-nav">
+						<ul class="clear">
+							<li class="first">
+								<a href="/mmecf/site/gpjy" class="li_link">交易大厅</a>
+								<div class="z-sort">
+						         	 <ul class="sort-list clear">
+						                <li class="sort-li">
+						                  <h3>
+						                    <span>1F</span>
+						                    <p class="sort-qut">
+						                      <strong><a href="#class1">棒线材</a></strong>
+						                      <em>棒材、线材</em>
+						                    </p>
+						                  </h3>
+						                  <div class="show" style="top: 0px;">
+						                    <ul>
+						                      <li>
+						                        <span>棒材</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zpmLink('热轧带肋钢筋')">热轧带肋钢筋</a><a href="javascript:;" onclick="zpmLink('冷轧带肋钢筋')">冷轧带肋钢筋</a><a href="javascript:;" onclick="zpmLink('其他特殊棒材')">其他特殊棒材</a><a href="javascript:;" onclick="zpmLink('冷拉圆钢')">冷拉圆钢</a><a href="javascript:;" onclick="zpmLink('盘状带肋钢筋')">盘状带肋钢筋</a><a href="javascript:;" onclick="zpmLink('热轧圆钢')">热轧圆钢</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>线材</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zpmlink('普通线材')">普通线材</a><a href="javascript:;" onclick="zpmlink('高速线材')">高速线材</a><a href="javascript:;" onclick="zpmlink('钢丝')">钢丝</a><a href="javascript:;" onclick="zpmlink('其他特殊线材')">其他特殊线材</a><a href="javascript:;" onclick="zpmlink('高碳线材')">高碳线材</a><a href="javascript:;" onclick="zpmlink('拉丝线材')">拉丝线材</a><a href="javascript" onclick="zpmlink('焊丝')">焊丝</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>材质</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zczLink('Q235')">Q235</a><a href="javascript:;" onclick="zczLink('Q235B')">Q235B</a><a href="javascript:;" onclick="zczLink('HPB300')">HPB300</a><a href="javascript:;" onclick="zczLink('HRB335')">HRB335</a><a href="javascript:;" onclick="zczLink('HRB335E')">HRB335E</a><a href="javascript:;" onclick="zczLink('HRB400')">HRB400</a><a href="javascript:;" onclick="zczLink('HRB400E')">HRB400E</a><a href="javascript:;" onclick="zczLink('HRB500')">HRB500</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>规格</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zggLink1('5','6.5')">Φ6.5</a><a href="javascript:;" onclick="zggLink1('5','8')">Φ8</a><a href="javascript:;" onclick="zggLink1('5','10')">Φ10</a><a href="javascript:;" onclick="zggLink1('5','12')">Φ12</a><a href="javascript:;" onclick="zggLink1('5','14')">Φ14</a><a href="javascript:;" onclick="zggLink1('5','16')">Φ16</a><a href="javascript:;" onclick="zggLink1('5','18')">Φ18</a><a href="javascript:;" onclick="zggLink1('5','20')">Φ20</a><a href="javascript:;" onclick="zggLink1('5','22')">Φ22</a><a href="javascript:;" onclick="zggLink1('5','25')">Φ25</a><a href="javascript:;" onclick="zggLink1('5','28')">Φ28</a><a href="javascript:;" onclick="zggLink1('5','32')">Φ32</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>产地</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="ztjsjlink('西林钢铁')">西林钢铁</a><a href="javascript:;" onclick="ztjsjlink('海鑫')">海鑫</a><a href="javascript:;" onclick="ztjsjlink('达钢')">达钢</a><a href="javascript:;" onclick="ztjsjlink('深圳华美')">深圳华美</a><a href="javascript:;" onclick="ztjsjlink('安钢股份')">安钢股份</a>
+						                        </em>
+						                      </li>
+						                      
+						                    </ul>
+						                    <div class="ad"><a href="javascript:;"><img src="/images/new_index/northchina/1.jpg" alt=""></a></div>
+						                    <p class="yy"></p>
+						                  </div>
+						                </li>
+						                <li class="sort-li">
+						                  <h3>
+						                    <span>2F</span>
+						                    <p class="sort-qut">
+						                      <strong><a href="#class2">热轧板卷</a></strong>
+						                      <em>带钢、热轧板卷、中厚板</em>
+						                    </p>
+						                  </h3>
+						                  <div class="show" style="top: -70px;">
+						                    <ul>
+						                      <li>
+						                        <span>带钢</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zpmLink('热轧带钢')">热轧带钢</a><a href="javascript:;" onclick="zpmLink('涂镀钢带')">涂镀钢带</a><a href="javascript:;" onclick="zpmLink('镀镍钢带')">镀镍钢带</a><a href="javascript:;" onclick="zpmLink('冷轧带钢')">冷轧带钢</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>热轧板卷</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zpmLink('热轧卷板')">热轧卷板</a><a href="javascript:;" onclick="zpmLink('热轧平板')">热轧平板</a><a href="javascript:;" onclick="zpmLink('热轧酸洗卷')">热轧酸洗卷</a><a href="javascript:;" onclick="zpmLink('花纹卷板')">花纹卷板</a><a href="javascript:;" onclick="zpmLink('花纹切板')">花纹切板</a><a href="javascript:;" onclick="zpmLink('热轧酸洗板')">热轧酸洗板</a><a href="javascript:;" onclick="zpmLink('热轧合金钢卷')">热轧合金钢卷</a><a href="javascript:;" onclick="zpmLink('热轧低合金卷')">热轧低合金卷</a><a href="javascript:;" onclick="zpmLink('其他特殊热卷')">其他特殊热卷</a><a href="javascript:;" onclick="zpmLink('冷轧基板')">冷轧基板</a><a href="javascript:;" onclick="zpmLink('管线钢')">管线钢</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>中厚板</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zpmLink('热轧中板')">热轧中板</a><a href="javascript:;" onclick="zpmLink('热轧低合金中板')">热轧低合金中板</a><a href="javascript:;" onclick="zpmLink('热轧合金中板')">热轧合金中板</a><a href="javascript:;" onclick="zpmLink('冷轧普中板')">冷轧普中板</a><a href="javascript:;" onclick="zpmLink('压力容器用钢板')">压力容器用钢板</a><a href="javascript:;" onclick="zpmLink('冷轧合金中板')">冷轧合金中板</a><a href="javascript:;" onclick="zpmLink('其他特殊中板')">其他特殊中板</a><a href="javascript:;" onclick="zpmLink('酸洗中厚板')">酸洗中厚板</a><a href="javascript:;" onclick="zpmLink('造船用钢板')">造船用钢板</a><a href="javascript:;" onclick="zpmLink('冷轧低合金中板')">冷轧低合金中板</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>材质</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zczLink('Q235B')">Q235B</a><a href="javascript:;" onclick="zczLink('Q345B')">Q345B</a><a href="javascript:;" onclick="zczLink('SPHC')">SPHC</a><a href="javascript:;" onclick="zczLink('Q195L')">Q195L</a><a href="javascript:;" onclick="zczLink('HQ235B')">HQ235B</a><a href="javascript:;" onclick="zczLink('Q345C')">Q345C</a><a href="javascript:;" onclick="zczLink('Q420')">Q420</a><a href="javascript:;" onclick="zczLink('510L')">510L</a><a href="javascript:;" onclick="zczLink('60#')">60#</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>规格</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zggLink2('1','2.75','3','1500')">2.75*1500*C</a><a href="javascript:;" onclick="zggLink2('1','3.75','3','1500')">3.75*1500*C</a><a href="javascript:;" onclick="zggLink2('1','4.75','3','1500')">4.75*1500*C</a><a href="javascript:;" onclick="zggLink2('1','7.75','3','1500')">7.75*1500*C</a><a href="javascript:;" onclick="zggLink2('1','9.75','3','1500')">9.75*1500*C</a><a href="javascript:;" onclick="zggLink2('1','11.75','3','1500')">11.75*1500*C</a><a href="javascript:;" onclick="zggLink2('1','13.75','3','1500')">13.75*1500*C</a><a href="javascript:;" onclick="zggLink2('1','5.5','3','1500')">5.5*1500*C</a><a href="javascript:;" onclick="zggLink2('1','7.5','3','1500')">7.5*1500*C</a><a href="javascript:;" onclick="zggLink2('1','11.5','3','1500')">11.5*1500*C</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>产地</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="ztjsjlink('安钢股份')">安钢股份</a><a href="javascript:;" onclick="ztjsjlink('太钢')">太钢</a><a href="javascript:;" onclick="ztjsjlink('武钢')">武钢</a><a href="javascript:;" onclick="ztjsjlink('攀钢')">攀钢</a><a href="javascript:;" onclick="ztjsjlink('唐山港陆')">唐山港陆</a><a href="javascript:;" onclick="ztjsjlink('普阳钢铁')">普阳钢铁</a>
+						                        </em>
+						                      </li>
+						                      
+						                    </ul>
+						                    <div class="ad"><a href="http://www.xinyilian.com/mmecf/site/ccwl/cw/flowGoodDetail?id=87"><img src="/images/new_index/northchina/2.jpg" alt=""></a></div>
+						                    <p class="yy"></p>
+						                  </div>
+						                </li>
+						                <li class="sort-li">
+						                  <h3>
+						                    <span>3F</span>
+						                    <p class="sort-qut">
+						                      <strong><a href="#class3">冷轧及涂镀</a></strong>
+						                      <em>冷轧板卷、镀锌板、其他涂镀板</em>
+						                    </p>
+						                  </h3>
+						                  <div class="show" style="top: -140px;">
+						                    <ul>
+						                      <li>
+						                        <span>冷轧板卷</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zpmLink('冷轧卷板')">冷轧卷板</a><a href="javascript:;" onclick="zpmLink('冷轧切板')">冷轧切板</a><a href="javascript:;" onclick="zpmLink('冷盒板')">冷盒板</a><a href="javascript:;" onclick="zpmLink('深冲压冷板')">深冲压冷板</a><a href="javascript:;" onclick="zpmLink('冷硬板(卷)')">冷硬板(卷)</a>
+						                        </em>
+						                      </li>
+						                      
+						                      <li>
+						                        <span>镀锌板</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zpmLink('热镀锌卷板')">热镀锌卷板</a><a href="javascript:;" onclick="zpmLink('热镀锌平板')">热镀锌平板</a><a href="javascript:;" onclick="zpmLink('滚压板')">滚压板</a><a href="javascript:;" onclick="zpmLink('电镀锌平板')">电镀锌平板</a><a href="javascript:;" onclick="zpmLink('耐指纹电镀锌板')">耐指纹电镀锌板</a><a href="javascript:;" onclick="zpmLink('电镀锌卷板')">电镀锌卷板</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>其他涂镀板</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zpmLink('镀锡卷板')">镀锡卷板</a><a href="javascript:;" onclick="zpmLink('镀锡平板')">镀锡平板</a><a href="javascript:;" onclick="zpmLink('镀铬卷板')">镀铬卷板</a><a href="javascript:;" onclick="zpmLink('镀铬平板')">镀铬平板</a><a href="javascript:;" onclick="zpmLink('镀铝锌镁钢板')">镀铝锌镁钢板</a><a href="javascript:;" onclick="zpmLink('涂塑卷板')">涂塑卷板</a><a href="javascript:;" onclick="zpmLink('彩涂平板')">彩涂平板</a><a href="javascript:;" onclick="zpmLink('镀铝板')">镀铝板</a><a href="javascript:;" onclick="zpmLink('镀铝锌板')">镀铝锌板</a><a href="javascript:;" onclick="zpmLink('彩涂卷板')">彩涂卷板</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>材质</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zczLink('SPCC')">SPCC</a><a href="javascript:;" onclick="zczLink('CR340LA')">CR340LA</a><a href="javascript:;" onclick="zczLink('DC01')">DC01</a><a href="javascript:;" onclick="zczLink('DC03')">DC03</a><a href="javascript:;" onclick="zczLink('Q235')">Q235</a><a href="javascript:;" onclick="zczLink('DC03-IF')">DC03-IF</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>规格</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zggLink2('1','1.95','3','1250')">1.95*1250*C</a><a href="javascript:;" onclick="zggLink2('1','2.00','3','1250')">2.00*1250*C</a><a href="javascript:;" onclick="zggLink2('1','1.88','3','1250')">1.88*1250</a><a href="javascript:;" onclick="zggLink2('1','1.50','3','1250')">1.50*1250*C</a><a href="javascript:;" onclick="zggLink2('1','1.80','3','1250')">1.80*1250*C</a><a href="javascript:;" onclick="zggLink2('1','1.40','3','1250')">1.40*1250*C</a>
+						                        </em>
+						                        
+						                      </li>
+						                      <li>
+						                        <span>产地</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="ztjsjlink('河北新金')">河北新金</a><a href="javascript:;" onclick="ztjsjlink('邯钢')">邯钢</a><a href="javascript:;" onclick="ztjsjlink('酒钢翼城')">酒钢翼城</a>
+						                        </em>                 
+						                      </li>
+						                    </ul>
+						                    <div class="ad"><a href="javascript:;"><img src="/images/new_index/northchina/3.jpg" alt=""></a></div>
+						                    <p class="yy"></p>
+						                  </div>
+						                </li>
+						                <li class="sort-li">
+						                  <h3>
+						                    <span>4F</span>
+						                    <p class="sort-qut">
+						                      <strong><a href="#class4">其他</a></strong>
+						                      <em>型材、管材、不锈钢、电工钢、钢坯</em>
+						                    </p>
+						                  </h3>
+						                  <div class="show" style="top: -210px;">
+						                    <ul>
+						                      
+						                      <li>
+						                        <span>型材</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zpmLink('工字钢')">工字钢</a><a href="javascript" onclick="zpmLink('槽钢')">槽钢</a><a href="javascript:;" onclick="zpmLink('H型钢')">H型钢</a><a href="javascript:;" onclick="zpmLink('乙字钢')">乙字钢</a><a href="javascript:;" onclick="zpmLink('T型钢')">T型钢</a><a href="javascript:;" onclick="zpmLink('其他型钢')">其他型钢</a><a href="javascript:;" onclick="zpmLink('热轧六角钢')">热轧六角钢</a><a href="javascript:;" onclick="zpmLink('热轧扁钢')">热轧扁钢</a><a href="javascript:;" onclick="zpmLink('冷拉扁钢')">冷拉扁钢</a><a href="javascript:;" onclick="zpmLink('球扁钢')">球扁钢</a><a href="javascript:;" onclick="zpmLink('热轧方钢')">热轧方钢</a><a href="javascript:;" onclick="zpmLink('冷拉方钢')">冷拉方钢</a><a href="javascript:;" onclick="zpmLink('角钢')">角钢</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>管材</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zpmLink('直缝焊管')">直缝焊管</a><a href="javascript:;" onclick="zpmLink('螺旋焊管')">螺旋焊管</a><a href="javascript:;" onclick="zpmLink('镀锌焊管')">镀锌焊管</a><a href="javascript" onclick="zpmLink('铸管')">铸管</a><a href="javascript:;" onclick="zpmLink('热轧无缝钢管')">热轧无缝钢管</a><a href="javascript:;" onclick="zpmLink('冷拔无缝钢管')">冷拔无缝钢管</a><a href="javascript:;" onclick="zpmLink('其他管材')">其他管材</a><a href="javascript:;" onclick="zpmLink('锅炉用焊管')">锅炉用焊管</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>不锈钢</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zpmLink('热轧不锈钢卷板')">热轧不锈钢卷板</a><a href="javascript:;" onclick="zpmLink('其他特殊不锈钢')">其他特殊不锈钢</a><a href="javascript:;" onclick="zpmLink('热轧黑皮不锈钢')">热轧黑皮不锈钢</a><a href="javascript:;" onclick="zpmLink('冷轧不锈钢卷板')">冷轧不锈钢卷板</a><a href="javascript:;" onclick="zpmLink('冷轧不锈钢切板')">冷轧不锈钢切板</a><a href="javascript:;" onclick="zpmLink('热轧不锈钢复合钢板')">热轧不锈钢复合钢板</a><a href="javascript:;" onclick="zpmLink('冷轧不锈钢复合钢板')">冷轧不锈钢复合钢板</a><a href="javascript:;" onclick="zpmLink('不锈钢波纹板')">不锈钢波纹板</a><a href="javascript:;" onclick="zpmLink('热轧不锈钢带')">热轧不锈钢带</a><a href="javascript:;" onclick="zpmLink('冷轧不锈钢带')">冷轧不锈钢带</a><a href="javascript:;" onclick="zpmLink('不锈钢无缝钢管')">不锈钢无缝钢管</a><a href="javascript:;" onclick="zpmLink('不锈钢盘条')">不锈钢盘条</a><a href="javascript:;" onclick="zpmLink('冷轧不锈钢棒')">冷轧不锈钢棒</a><a href="javascript:;" onclick="zpmLink('热轧不锈钢棒')">热轧不锈钢棒</a><a href="javascript:;" onclick="zpmLink('不锈钢型材')">不锈钢型材</a><a href="javascript:;" onclick="zpmLink('不锈钢丝')">不锈钢丝</a><a href="javascript:;" onclick="zpmLink('不锈焊丝')">不锈焊丝</a><a href="javascript:;" onclick="zpmLink('不锈钢焊管')">不锈钢焊管</a><a href="javascript:;" onclick="zpmLink('热轧不锈钢切板')">热轧不锈钢切板</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>电工钢</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zpmLink('热轧硅钢')">热轧硅钢</a><a href="javascript:;" onclick="zpmLink('冷轧无取向硅钢')">冷轧无取向硅钢</a><a href="javascript:;" onclick="zpmLink('冷轧取向硅钢')">冷轧取向硅钢</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>钢坯</span>
+						                        <em>
+						                          <a href="javascript" onclick="zpmLink('方坯')">方坯</a><a href="javascript" onclick="zpmLink('板坯')">板坯</a><a href="javascript:;" onclick="zpmLink('钢坯')">钢坯</a><a href="javascript:;" onclick="zpmLink('矩形坯')">矩形坯</a><a href="javascript:;" onclick="zpmLink('管坯')">管坯</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>材质</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zczLink('Q235')">Q235</a><a href="javascript:;" onclick="zczLink('40Mn')">40Mn</a><a href="javascript:;" onclick="zczLink('Q235B')">Q235B</a><a href="javascript:;" onclick="zczLink('L360')">L360</a>  
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>规格</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="zggLink2('5','610','8','8.7','2','12000')">610x8.7x12000</a><a href="javascript:;" onclick="zggLink2('5','1220','8','14','2','12000')">1220x14x12000</a><a href="javascript:;" onclick="zggLink2('5','2020','8','16','2','12000')">2020x16x12000</a>
+						                        </em>
+						                      </li>
+						                      <li>
+						                        <span>产地</span>
+						                        <em>
+						                          <a href="javascript:;" onclick="ztjsjlink('永博矿山支护公司')">永博矿山支护公司</a><a href="javascript:;" onclick="ztjsjlink('天津荣程联合')">天津荣程联合</a><a href="javascript:;" onclick="ztjsjlink('五矿甬泰')">五矿甬泰</a><a href="javascript:;" onclick="ztjsjlink('鞍钢')">鞍钢</a>  
+						                        </em>
+						                      </li>
+						                      
+						                    </ul>
+						                    <div class="ad"><a href="javascript:;"><img src="/images/new_index/northchina/4.jpg" alt=""></a></div>
+						                    <p class="yy"></p>
+						                  </div>
+						                </li>
+						                
+						              </ul>
+						        </div>
+							</li>
+							<li class="nav_li"><a href="/mmecf/site/pur" class="li_link">资源求购</a></li>
+							<li class="nav_li"><a href="/sales" class="li_link">企业专区</a></li>
+							<li class="nav_li"><a href="/mmecf/site/sskc" class="li_link">实时库存</a></li>
+							<li class="nav_li"><a href="/mmecf/site/ccwl/cw" class="li_link">物流服务</a></li>
+							<li class="nav_li"><a href="/Bizinfo" class="li_link">商情资讯</a></li>
+							<li class="last"> <a href="/zxrz">金融服务<em></em><span></span></a>
+		                      <div>
+		                        <p><a href="/zxrz">在线融资</a></p>
+		                        <p><a href="/zxrz/xinpay/">鑫支付</a></p>
+		                      </div>
+		                    </li>
+						</ul>			
+					</div>
+				</div>
+				<p>提示框</p>
+				<div class="tishi">
+					<p class="z-tishi"></p>
+				</div>
+				<p>列表</p>
+				<div class="product-list">
+				  <div class="product-tit">
+				    <h3>实时库存</h3>
+				    <span>总数量</span><em>总重量</em>
+				  </div>
+				  <div class="list">
+				    <div class="list">
+				      <ul id="slistnew" style="top: -1470px;">
+				        <li><strong title="花纹卷板"> 花纹卷板 </strong> <span title="41">41</span> <em title="676.265">676.265</em> </li>
+				        <li><strong title="盘状带肋钢筋"> 盘状带肋钢筋 </strong> <span title="10726">10726</span> <em title="22021.917">22021.917</em> </li>
+				        <li><strong title="冷硬板(卷)"> 冷硬板(卷) </strong> <span title="165">165</span> <em title="3414.238">3414.238</em> </li>
+				        <li><strong title="镀锌平板"> 镀锌平板 </strong> <span title="165">165</span> <em title="165">165</em> </li>
+				        <li><strong title="尾料"> 尾料 </strong> <span title="9">9</span> <em title="0.23">0.23</em> </li>
+				        <li><strong title="彩涂卷板"> 彩涂卷板 </strong> <span title="83">83</span> <em title="95">95</em> </li>
+				        <li><strong title="热轧平板"> 热轧平板 </strong> <span title="3472">3472</span> <em title="2600.318">2600.318</em> </li>
+				        <li><strong title="H型钢"> H型钢 </strong> <span title="89">89</span> <em title="66.313">66.313</em> </li>
+				        <li><strong title="热轧低合金中板"> 热轧低合金中 ... </strong> <span title="492">492</span> <em title="1686.937">1686.937</em> </li>
+				        <li><strong title="热镀锌卷板"> 热镀锌卷板 </strong> <span title="759">759</span> <em title="2078.273">2078.273</em> </li>
+				        <li><strong title="热轧不锈钢卷板"> 热轧不锈钢卷 ... </strong> <span title="162">162</span> <em title="2120.506">2120.506</em> </li>
+				        <li><strong title="钢绞线"> 钢绞线 </strong> <span title="33">33</span> <em title="113.056">113.056</em> </li>
+				        <li><strong title="热轧带钢"> 热轧带钢 </strong> <span title="11204">11204</span> <em title="25902.634">25902.634</em> </li>
+				        <li><strong title="冷轧切板"> 冷轧切板 </strong> <span title="26394">26394</span> <em title="577.984">577.984</em> </li>
+				        <li><strong title="铸管"> 铸管 </strong> <span title="9003">9003</span> <em title="8763.877">8763.877</em> </li>
+				        <li><strong title="角钢"> 角钢 </strong> <span title="29">29</span> <em title="93.519">93.519</em> </li>
+				        <li><strong title="冷盒板"> 冷盒板 </strong> <span title="723">723</span> <em title="3607.97">3607.97</em> </li>
+				        <li><strong title="冷轧带钢"> 冷轧带钢 </strong> <span title="1197">1197</span> <em title="3509.171">3509.171</em> </li>
+				        <li><strong title="不锈钢波纹板"> 不锈钢波纹板 </strong> <span title="3898">3898</span> <em title="4182">4182</em> </li>
+				        <li><strong title="冷轧卷板"> 冷轧卷板 </strong> <span title="17516">17516</span> <em title="35484.969">35484.969</em> </li>
+				        <li><strong title="电镀锌卷板"> 电镀锌卷板 </strong> <span title="504">504</span> <em title="4976.827">4976.827</em> </li>
+				        <li><strong title="热轧带肋钢筋"> 热轧带肋钢筋 </strong> <span title="1944573">1944573</span> <em title="102657.723">102657.723</em> </li>
+				        <li><strong title="线材"> 线材 </strong> <span title="2833">2833</span> <em title="3934.712">3934.712</em> </li>
+				        <li class=""><strong title="不锈钢型材"> 不锈钢型材 </strong> <span title="2">2</span> <em title="1.093">1.093</em> </li>
+				        <li class=""><strong title="热轧低合金卷"> 热轧低合金卷 </strong> <span title="46">46</span> <em title="1302.965">1302.965</em> </li>
+				        <li><strong title="冷轧不锈钢卷板"> 冷轧不锈钢卷 ... </strong> <span title="533">533</span> <em title="3188.411">3188.411</em> </li>
+				        <li><strong title="冷轧不锈钢切板"> 冷轧不锈钢切 ... </strong> <span title="41">41</span> <em title="19.152">19.152</em> </li>
+				        <li><strong title="热轧圆钢"> 热轧圆钢 </strong> <span title="2550">2550</span> <em title="26901.232">26901.232</em> </li>
+				        <li><strong title="冷轧取向矽"> 冷轧取向矽 </strong> <span title="1299">1299</span> <em title="1493.905">1493.905</em> </li>
+				        <li><strong title="热轧酸洗卷"> 热轧酸洗卷 </strong> <span title="1906">1906</span> <em title="3723.704">3723.704</em> </li>
+				        <li><strong title="高速线材"> 高速线材 </strong> <span title="1893">1893</span> <em title="3647.112">3647.112</em> </li>
+				        <li><strong title="钢坯"> 钢坯 </strong> <span title="942">942</span> <em title="993.82">993.82</em> </li>
+				        <li><strong title="钢丝"> 钢丝 </strong> <span title="209">209</span> <em title="236.667">236.667</em> </li>
+				        <li><strong title="压力容器用钢板"> 压力容器用钢 ... </strong> <span title="1">1</span> <em title="0.904">0.904</em> </li>
+				        <li><strong title="热轧无缝钢管"> 热轧无缝钢管 </strong> <span title="45">45</span> <em title="28.171">28.171</em> </li>
+				        <li><strong title="直缝焊管"> 直缝焊管 </strong> <span title="45">45</span> <em title="38.52">38.52</em> </li>
+				        <li><strong title="热轧不锈钢带"> 热轧不锈钢带 </strong> <span title="31">31</span> <em title="425.15">425.15</em> </li>
+				        <li class=""><strong title="热轧卷板"> 热轧卷板 </strong> <span title="24967">24967</span> <em title="83432.979">83432.979</em> </li>
+				        <li class=""><strong title="热轧中板"> 热轧中板 </strong> <span title="9291">9291</span> <em title="29826.134">29826.134</em> </li>
+				        <li><strong title="test"> test </strong> <span title="22">22</span> <em title="35.68">35.68</em> </li>
+				        <li class=""><strong title="电镀锌平板"> 电镀锌平板 </strong> <span title="654">654</span> <em title="54.142">54.142</em> </li>
+				        <li class=""><strong title="冷轧无取向硅钢"> 冷轧无取向硅 ... </strong> <span title="30">30</span> <em title="138.555">138.555</em> </li>
+				        <li class=""><strong title="花纹切板"> 花纹切板 </strong> <span title="63">63</span> <em title="15.442">15.442</em> </li>
+				        <li class=""><strong title="热轧合金钢卷"> 热轧合金钢卷 </strong> <span title="11">11</span> <em title="11.896">11.896</em> </li>
+				        <li class=""><strong title="镀锌卷板"> 镀锌卷板 </strong> <span title="3">3</span> <em title="2.115">2.115</em> </li>
+				        <li class=""><strong title="方坯"> 方坯 </strong> <span title="3120">3120</span> <em title="6552">6552</em> </li>
+				        <li><strong title="不锈钢酸洗钢带"> 不锈钢酸洗钢 ... </strong> <span title="15">15</span> <em title="182.76">182.76</em> </li>
+				        <li><strong title="花纹卷板"> 花纹卷板 </strong> <span title="41">41</span> <em title="676.265">676.265</em> </li>
+				        <li><strong title="盘状带肋钢筋"> 盘状带肋钢筋 </strong> <span title="10726">10726</span> <em title="22021.917">22021.917</em> </li>
+				        <li><strong title="冷硬板(卷)"> 冷硬板(卷) </strong> <span title="165">165</span> <em title="3414.238">3414.238</em> </li>
+				        <li><strong title="镀锌平板"> 镀锌平板 </strong> <span title="165">165</span> <em title="165">165</em> </li>
+				        <li><strong title="尾料"> 尾料 </strong> <span title="9">9</span> <em title="0.23">0.23</em> </li>
+				        <li><strong title="彩涂卷板"> 彩涂卷板 </strong> <span title="83">83</span> <em title="95">95</em> </li>
+				        <li><strong title="热轧平板"> 热轧平板 </strong> <span title="3472">3472</span> <em title="2600.318">2600.318</em> </li>
+				        <li><strong title="H型钢"> H型钢 </strong> <span title="89">89</span> <em title="66.313">66.313</em> </li>
+				        <li><strong title="热轧低合金中板"> 热轧低合金中 ... </strong> <span title="492">492</span> <em title="1686.937">1686.937</em> </li>
+				        <li><strong title="热镀锌卷板"> 热镀锌卷板 </strong> <span title="759">759</span> <em title="2078.273">2078.273</em> </li>
+				        <li><strong title="热轧不锈钢卷板"> 热轧不锈钢卷 ... </strong> <span title="162">162</span> <em title="2120.506">2120.506</em> </li>
+				        <li><strong title="钢绞线"> 钢绞线 </strong> <span title="33">33</span> <em title="113.056">113.056</em> </li>
+				        <li><strong title="热轧带钢"> 热轧带钢 </strong> <span title="11204">11204</span> <em title="25902.634">25902.634</em> </li>
+				        <li><strong title="冷轧切板"> 冷轧切板 </strong> <span title="26394">26394</span> <em title="577.984">577.984</em> </li>
+				        <li><strong title="铸管"> 铸管 </strong> <span title="9003">9003</span> <em title="8763.877">8763.877</em> </li>
+				        <li><strong title="角钢"> 角钢 </strong> <span title="29">29</span> <em title="93.519">93.519</em> </li>
+				        <li><strong title="冷盒板"> 冷盒板 </strong> <span title="723">723</span> <em title="3607.97">3607.97</em> </li>
+				        <li><strong title="冷轧带钢"> 冷轧带钢 </strong> <span title="1197">1197</span> <em title="3509.171">3509.171</em> </li>
+				        <li><strong title="不锈钢波纹板"> 不锈钢波纹板 </strong> <span title="3898">3898</span> <em title="4182">4182</em> </li>
+				        <li><strong title="冷轧卷板"> 冷轧卷板 </strong> <span title="17516">17516</span> <em title="35484.969">35484.969</em> </li>
+				        <li><strong title="电镀锌卷板"> 电镀锌卷板 </strong> <span title="504">504</span> <em title="4976.827">4976.827</em> </li>
+				        <li><strong title="热轧带肋钢筋"> 热轧带肋钢筋 </strong> <span title="1944573">1944573</span> <em title="102657.723">102657.723</em> </li>
+				        <li><strong title="线材"> 线材 </strong> <span title="2833">2833</span> <em title="3934.712">3934.712</em> </li>
+				        <li><strong title="不锈钢型材"> 不锈钢型材 </strong> <span title="2">2</span> <em title="1.093">1.093</em> </li>
+				        <li><strong title="热轧低合金卷"> 热轧低合金卷 </strong> <span title="46">46</span> <em title="1302.965">1302.965</em> </li>
+				        <li><strong title="冷轧不锈钢卷板"> 冷轧不锈钢卷 ... </strong> <span title="533">533</span> <em title="3188.411">3188.411</em> </li>
+				        <li><strong title="冷轧不锈钢切板"> 冷轧不锈钢切 ... </strong> <span title="41">41</span> <em title="19.152">19.152</em> </li>
+				        <li><strong title="热轧圆钢"> 热轧圆钢 </strong> <span title="2550">2550</span> <em title="26901.232">26901.232</em> </li>
+				        <li><strong title="冷轧取向矽"> 冷轧取向矽 </strong> <span title="1299">1299</span> <em title="1493.905">1493.905</em> </li>
+				        <li><strong title="热轧酸洗卷"> 热轧酸洗卷 </strong> <span title="1906">1906</span> <em title="3723.704">3723.704</em> </li>
+				        <li><strong title="高速线材"> 高速线材 </strong> <span title="1893">1893</span> <em title="3647.112">3647.112</em> </li>
+				        <li><strong title="钢坯"> 钢坯 </strong> <span title="942">942</span> <em title="993.82">993.82</em> </li>
+				        <li><strong title="钢丝"> 钢丝 </strong> <span title="209">209</span> <em title="236.667">236.667</em> </li>
+				        <li><strong title="压力容器用钢板"> 压力容器用钢 ... </strong> <span title="1">1</span> <em title="0.904">0.904</em> </li>
+				        <li><strong title="热轧无缝钢管"> 热轧无缝钢管 </strong> <span title="45">45</span> <em title="28.171">28.171</em> </li>
+				        <li><strong title="直缝焊管"> 直缝焊管 </strong> <span title="45">45</span> <em title="38.52">38.52</em> </li>
+				        <li><strong title="热轧不锈钢带"> 热轧不锈钢带 </strong> <span title="31">31</span> <em title="425.15">425.15</em> </li>
+				        <li><strong title="热轧卷板"> 热轧卷板 </strong> <span title="24967">24967</span> <em title="83432.979">83432.979</em> </li>
+				        <li><strong title="热轧中板"> 热轧中板 </strong> <span title="9291">9291</span> <em title="29826.134">29826.134</em> </li>
+				        <li><strong title="test"> test </strong> <span title="22">22</span> <em title="35.68">35.68</em> </li>
+				        <li><strong title="电镀锌平板"> 电镀锌平板 </strong> <span title="654">654</span> <em title="54.142">54.142</em> </li>
+				        <li><strong title="冷轧无取向硅钢"> 冷轧无取向硅 ... </strong> <span title="30">30</span> <em title="138.555">138.555</em> </li>
+				        <li><strong title="花纹切板"> 花纹切板 </strong> <span title="63">63</span> <em title="15.442">15.442</em> </li>
+				        <li><strong title="热轧合金钢卷"> 热轧合金钢卷 </strong> <span title="11">11</span> <em title="11.896">11.896</em> </li>
+				        <li><strong title="镀锌卷板"> 镀锌卷板 </strong> <span title="3">3</span> <em title="2.115">2.115</em> </li>
+				        <li><strong title="方坯"> 方坯 </strong> <span title="3120">3120</span> <em title="6552">6552</em> </li>
+				        <li><strong title="不锈钢酸洗钢带"> 不锈钢酸洗钢 ... </strong> <span title="15">15</span> <em title="182.76">182.76</em> </li>
+				      </ul>
+				    </div>
+				  </div>
+				</div>
 
-
-					<div class="center">
-								<div class="z-nav">
-									<ul class="clear">
-										<li class="first">
-											<a href="/mmecf/site/gpjy" class="li_link">交易大厅</a>
-											<div class="z-sort">
-					         	 <ul class="sort-list clear">
-					                <li class="sort-li">
-					                  <h3>
-					                    <span>1F</span>
-					                    <p class="sort-qut">
-					                      <strong><a href="#class1">棒线材</a></strong>
-					                      <em>棒材、线材</em>
-					                    </p>
-					                  </h3>
-					                  <div class="show" style="top: 0px;">
-					                    <ul>
-					                      <li>
-					                        <span>棒材</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zpmLink('热轧带肋钢筋')">热轧带肋钢筋</a><a href="javascript:;" onclick="zpmLink('冷轧带肋钢筋')">冷轧带肋钢筋</a><a href="javascript:;" onclick="zpmLink('其他特殊棒材')">其他特殊棒材</a><a href="javascript:;" onclick="zpmLink('冷拉圆钢')">冷拉圆钢</a><a href="javascript:;" onclick="zpmLink('盘状带肋钢筋')">盘状带肋钢筋</a><a href="javascript:;" onclick="zpmLink('热轧圆钢')">热轧圆钢</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>线材</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zpmlink('普通线材')">普通线材</a><a href="javascript:;" onclick="zpmlink('高速线材')">高速线材</a><a href="javascript:;" onclick="zpmlink('钢丝')">钢丝</a><a href="javascript:;" onclick="zpmlink('其他特殊线材')">其他特殊线材</a><a href="javascript:;" onclick="zpmlink('高碳线材')">高碳线材</a><a href="javascript:;" onclick="zpmlink('拉丝线材')">拉丝线材</a><a href="javascript" onclick="zpmlink('焊丝')">焊丝</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>材质</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zczLink('Q235')">Q235</a><a href="javascript:;" onclick="zczLink('Q235B')">Q235B</a><a href="javascript:;" onclick="zczLink('HPB300')">HPB300</a><a href="javascript:;" onclick="zczLink('HRB335')">HRB335</a><a href="javascript:;" onclick="zczLink('HRB335E')">HRB335E</a><a href="javascript:;" onclick="zczLink('HRB400')">HRB400</a><a href="javascript:;" onclick="zczLink('HRB400E')">HRB400E</a><a href="javascript:;" onclick="zczLink('HRB500')">HRB500</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>规格</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zggLink1('5','6.5')">Φ6.5</a><a href="javascript:;" onclick="zggLink1('5','8')">Φ8</a><a href="javascript:;" onclick="zggLink1('5','10')">Φ10</a><a href="javascript:;" onclick="zggLink1('5','12')">Φ12</a><a href="javascript:;" onclick="zggLink1('5','14')">Φ14</a><a href="javascript:;" onclick="zggLink1('5','16')">Φ16</a><a href="javascript:;" onclick="zggLink1('5','18')">Φ18</a><a href="javascript:;" onclick="zggLink1('5','20')">Φ20</a><a href="javascript:;" onclick="zggLink1('5','22')">Φ22</a><a href="javascript:;" onclick="zggLink1('5','25')">Φ25</a><a href="javascript:;" onclick="zggLink1('5','28')">Φ28</a><a href="javascript:;" onclick="zggLink1('5','32')">Φ32</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>产地</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="ztjsjlink('西林钢铁')">西林钢铁</a><a href="javascript:;" onclick="ztjsjlink('海鑫')">海鑫</a><a href="javascript:;" onclick="ztjsjlink('达钢')">达钢</a><a href="javascript:;" onclick="ztjsjlink('深圳华美')">深圳华美</a><a href="javascript:;" onclick="ztjsjlink('安钢股份')">安钢股份</a>
-					                        </em>
-					                      </li>
-					                      
-					                    </ul>
-					                    <div class="ad"><a href="javascript:;"><img src="/images/new_index/northchina/1.jpg" alt=""></a></div>
-					                    <p class="yy"></p>
-					                  </div>
-					                </li>
-					                <li class="sort-li">
-					                  <h3>
-					                    <span>2F</span>
-					                    <p class="sort-qut">
-					                      <strong><a href="#class2">热轧板卷</a></strong>
-					                      <em>带钢、热轧板卷、中厚板</em>
-					                    </p>
-					                  </h3>
-					                  <div class="show" style="top: -70px;">
-					                    <ul>
-					                      <li>
-					                        <span>带钢</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zpmLink('热轧带钢')">热轧带钢</a><a href="javascript:;" onclick="zpmLink('涂镀钢带')">涂镀钢带</a><a href="javascript:;" onclick="zpmLink('镀镍钢带')">镀镍钢带</a><a href="javascript:;" onclick="zpmLink('冷轧带钢')">冷轧带钢</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>热轧板卷</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zpmLink('热轧卷板')">热轧卷板</a><a href="javascript:;" onclick="zpmLink('热轧平板')">热轧平板</a><a href="javascript:;" onclick="zpmLink('热轧酸洗卷')">热轧酸洗卷</a><a href="javascript:;" onclick="zpmLink('花纹卷板')">花纹卷板</a><a href="javascript:;" onclick="zpmLink('花纹切板')">花纹切板</a><a href="javascript:;" onclick="zpmLink('热轧酸洗板')">热轧酸洗板</a><a href="javascript:;" onclick="zpmLink('热轧合金钢卷')">热轧合金钢卷</a><a href="javascript:;" onclick="zpmLink('热轧低合金卷')">热轧低合金卷</a><a href="javascript:;" onclick="zpmLink('其他特殊热卷')">其他特殊热卷</a><a href="javascript:;" onclick="zpmLink('冷轧基板')">冷轧基板</a><a href="javascript:;" onclick="zpmLink('管线钢')">管线钢</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>中厚板</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zpmLink('热轧中板')">热轧中板</a><a href="javascript:;" onclick="zpmLink('热轧低合金中板')">热轧低合金中板</a><a href="javascript:;" onclick="zpmLink('热轧合金中板')">热轧合金中板</a><a href="javascript:;" onclick="zpmLink('冷轧普中板')">冷轧普中板</a><a href="javascript:;" onclick="zpmLink('压力容器用钢板')">压力容器用钢板</a><a href="javascript:;" onclick="zpmLink('冷轧合金中板')">冷轧合金中板</a><a href="javascript:;" onclick="zpmLink('其他特殊中板')">其他特殊中板</a><a href="javascript:;" onclick="zpmLink('酸洗中厚板')">酸洗中厚板</a><a href="javascript:;" onclick="zpmLink('造船用钢板')">造船用钢板</a><a href="javascript:;" onclick="zpmLink('冷轧低合金中板')">冷轧低合金中板</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>材质</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zczLink('Q235B')">Q235B</a><a href="javascript:;" onclick="zczLink('Q345B')">Q345B</a><a href="javascript:;" onclick="zczLink('SPHC')">SPHC</a><a href="javascript:;" onclick="zczLink('Q195L')">Q195L</a><a href="javascript:;" onclick="zczLink('HQ235B')">HQ235B</a><a href="javascript:;" onclick="zczLink('Q345C')">Q345C</a><a href="javascript:;" onclick="zczLink('Q420')">Q420</a><a href="javascript:;" onclick="zczLink('510L')">510L</a><a href="javascript:;" onclick="zczLink('60#')">60#</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>规格</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zggLink2('1','2.75','3','1500')">2.75*1500*C</a><a href="javascript:;" onclick="zggLink2('1','3.75','3','1500')">3.75*1500*C</a><a href="javascript:;" onclick="zggLink2('1','4.75','3','1500')">4.75*1500*C</a><a href="javascript:;" onclick="zggLink2('1','7.75','3','1500')">7.75*1500*C</a><a href="javascript:;" onclick="zggLink2('1','9.75','3','1500')">9.75*1500*C</a><a href="javascript:;" onclick="zggLink2('1','11.75','3','1500')">11.75*1500*C</a><a href="javascript:;" onclick="zggLink2('1','13.75','3','1500')">13.75*1500*C</a><a href="javascript:;" onclick="zggLink2('1','5.5','3','1500')">5.5*1500*C</a><a href="javascript:;" onclick="zggLink2('1','7.5','3','1500')">7.5*1500*C</a><a href="javascript:;" onclick="zggLink2('1','11.5','3','1500')">11.5*1500*C</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>产地</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="ztjsjlink('安钢股份')">安钢股份</a><a href="javascript:;" onclick="ztjsjlink('太钢')">太钢</a><a href="javascript:;" onclick="ztjsjlink('武钢')">武钢</a><a href="javascript:;" onclick="ztjsjlink('攀钢')">攀钢</a><a href="javascript:;" onclick="ztjsjlink('唐山港陆')">唐山港陆</a><a href="javascript:;" onclick="ztjsjlink('普阳钢铁')">普阳钢铁</a>
-					                        </em>
-					                      </li>
-					                      
-					                    </ul>
-					                    <div class="ad"><a href="http://www.xinyilian.com/mmecf/site/ccwl/cw/flowGoodDetail?id=87"><img src="/images/new_index/northchina/2.jpg" alt=""></a></div>
-					                    <p class="yy"></p>
-					                  </div>
-					                </li>
-					                <li class="sort-li">
-					                  <h3>
-					                    <span>3F</span>
-					                    <p class="sort-qut">
-					                      <strong><a href="#class3">冷轧及涂镀</a></strong>
-					                      <em>冷轧板卷、镀锌板、其他涂镀板</em>
-					                    </p>
-					                  </h3>
-					                  <div class="show" style="top: -140px;">
-					                    <ul>
-					                      <li>
-					                        <span>冷轧板卷</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zpmLink('冷轧卷板')">冷轧卷板</a><a href="javascript:;" onclick="zpmLink('冷轧切板')">冷轧切板</a><a href="javascript:;" onclick="zpmLink('冷盒板')">冷盒板</a><a href="javascript:;" onclick="zpmLink('深冲压冷板')">深冲压冷板</a><a href="javascript:;" onclick="zpmLink('冷硬板(卷)')">冷硬板(卷)</a>
-					                        </em>
-					                      </li>
-					                      
-					                      <li>
-					                        <span>镀锌板</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zpmLink('热镀锌卷板')">热镀锌卷板</a><a href="javascript:;" onclick="zpmLink('热镀锌平板')">热镀锌平板</a><a href="javascript:;" onclick="zpmLink('滚压板')">滚压板</a><a href="javascript:;" onclick="zpmLink('电镀锌平板')">电镀锌平板</a><a href="javascript:;" onclick="zpmLink('耐指纹电镀锌板')">耐指纹电镀锌板</a><a href="javascript:;" onclick="zpmLink('电镀锌卷板')">电镀锌卷板</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>其他涂镀板</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zpmLink('镀锡卷板')">镀锡卷板</a><a href="javascript:;" onclick="zpmLink('镀锡平板')">镀锡平板</a><a href="javascript:;" onclick="zpmLink('镀铬卷板')">镀铬卷板</a><a href="javascript:;" onclick="zpmLink('镀铬平板')">镀铬平板</a><a href="javascript:;" onclick="zpmLink('镀铝锌镁钢板')">镀铝锌镁钢板</a><a href="javascript:;" onclick="zpmLink('涂塑卷板')">涂塑卷板</a><a href="javascript:;" onclick="zpmLink('彩涂平板')">彩涂平板</a><a href="javascript:;" onclick="zpmLink('镀铝板')">镀铝板</a><a href="javascript:;" onclick="zpmLink('镀铝锌板')">镀铝锌板</a><a href="javascript:;" onclick="zpmLink('彩涂卷板')">彩涂卷板</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>材质</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zczLink('SPCC')">SPCC</a><a href="javascript:;" onclick="zczLink('CR340LA')">CR340LA</a><a href="javascript:;" onclick="zczLink('DC01')">DC01</a><a href="javascript:;" onclick="zczLink('DC03')">DC03</a><a href="javascript:;" onclick="zczLink('Q235')">Q235</a><a href="javascript:;" onclick="zczLink('DC03-IF')">DC03-IF</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>规格</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zggLink2('1','1.95','3','1250')">1.95*1250*C</a><a href="javascript:;" onclick="zggLink2('1','2.00','3','1250')">2.00*1250*C</a><a href="javascript:;" onclick="zggLink2('1','1.88','3','1250')">1.88*1250</a><a href="javascript:;" onclick="zggLink2('1','1.50','3','1250')">1.50*1250*C</a><a href="javascript:;" onclick="zggLink2('1','1.80','3','1250')">1.80*1250*C</a><a href="javascript:;" onclick="zggLink2('1','1.40','3','1250')">1.40*1250*C</a>
-					                        </em>
-					                        
-					                      </li>
-					                      <li>
-					                        <span>产地</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="ztjsjlink('河北新金')">河北新金</a><a href="javascript:;" onclick="ztjsjlink('邯钢')">邯钢</a><a href="javascript:;" onclick="ztjsjlink('酒钢翼城')">酒钢翼城</a>
-					                        </em>                 
-					                      </li>
-					                    </ul>
-					                    <div class="ad"><a href="javascript:;"><img src="/images/new_index/northchina/3.jpg" alt=""></a></div>
-					                    <p class="yy"></p>
-					                  </div>
-					                </li>
-					                <li class="sort-li">
-					                  <h3>
-					                    <span>4F</span>
-					                    <p class="sort-qut">
-					                      <strong><a href="#class4">其他</a></strong>
-					                      <em>型材、管材、不锈钢、电工钢、钢坯</em>
-					                    </p>
-					                  </h3>
-					                  <div class="show" style="top: -210px;">
-					                    <ul>
-					                      
-					                      <li>
-					                        <span>型材</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zpmLink('工字钢')">工字钢</a><a href="javascript" onclick="zpmLink('槽钢')">槽钢</a><a href="javascript:;" onclick="zpmLink('H型钢')">H型钢</a><a href="javascript:;" onclick="zpmLink('乙字钢')">乙字钢</a><a href="javascript:;" onclick="zpmLink('T型钢')">T型钢</a><a href="javascript:;" onclick="zpmLink('其他型钢')">其他型钢</a><a href="javascript:;" onclick="zpmLink('热轧六角钢')">热轧六角钢</a><a href="javascript:;" onclick="zpmLink('热轧扁钢')">热轧扁钢</a><a href="javascript:;" onclick="zpmLink('冷拉扁钢')">冷拉扁钢</a><a href="javascript:;" onclick="zpmLink('球扁钢')">球扁钢</a><a href="javascript:;" onclick="zpmLink('热轧方钢')">热轧方钢</a><a href="javascript:;" onclick="zpmLink('冷拉方钢')">冷拉方钢</a><a href="javascript:;" onclick="zpmLink('角钢')">角钢</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>管材</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zpmLink('直缝焊管')">直缝焊管</a><a href="javascript:;" onclick="zpmLink('螺旋焊管')">螺旋焊管</a><a href="javascript:;" onclick="zpmLink('镀锌焊管')">镀锌焊管</a><a href="javascript" onclick="zpmLink('铸管')">铸管</a><a href="javascript:;" onclick="zpmLink('热轧无缝钢管')">热轧无缝钢管</a><a href="javascript:;" onclick="zpmLink('冷拔无缝钢管')">冷拔无缝钢管</a><a href="javascript:;" onclick="zpmLink('其他管材')">其他管材</a><a href="javascript:;" onclick="zpmLink('锅炉用焊管')">锅炉用焊管</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>不锈钢</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zpmLink('热轧不锈钢卷板')">热轧不锈钢卷板</a><a href="javascript:;" onclick="zpmLink('其他特殊不锈钢')">其他特殊不锈钢</a><a href="javascript:;" onclick="zpmLink('热轧黑皮不锈钢')">热轧黑皮不锈钢</a><a href="javascript:;" onclick="zpmLink('冷轧不锈钢卷板')">冷轧不锈钢卷板</a><a href="javascript:;" onclick="zpmLink('冷轧不锈钢切板')">冷轧不锈钢切板</a><a href="javascript:;" onclick="zpmLink('热轧不锈钢复合钢板')">热轧不锈钢复合钢板</a><a href="javascript:;" onclick="zpmLink('冷轧不锈钢复合钢板')">冷轧不锈钢复合钢板</a><a href="javascript:;" onclick="zpmLink('不锈钢波纹板')">不锈钢波纹板</a><a href="javascript:;" onclick="zpmLink('热轧不锈钢带')">热轧不锈钢带</a><a href="javascript:;" onclick="zpmLink('冷轧不锈钢带')">冷轧不锈钢带</a><a href="javascript:;" onclick="zpmLink('不锈钢无缝钢管')">不锈钢无缝钢管</a><a href="javascript:;" onclick="zpmLink('不锈钢盘条')">不锈钢盘条</a><a href="javascript:;" onclick="zpmLink('冷轧不锈钢棒')">冷轧不锈钢棒</a><a href="javascript:;" onclick="zpmLink('热轧不锈钢棒')">热轧不锈钢棒</a><a href="javascript:;" onclick="zpmLink('不锈钢型材')">不锈钢型材</a><a href="javascript:;" onclick="zpmLink('不锈钢丝')">不锈钢丝</a><a href="javascript:;" onclick="zpmLink('不锈焊丝')">不锈焊丝</a><a href="javascript:;" onclick="zpmLink('不锈钢焊管')">不锈钢焊管</a><a href="javascript:;" onclick="zpmLink('热轧不锈钢切板')">热轧不锈钢切板</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>电工钢</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zpmLink('热轧硅钢')">热轧硅钢</a><a href="javascript:;" onclick="zpmLink('冷轧无取向硅钢')">冷轧无取向硅钢</a><a href="javascript:;" onclick="zpmLink('冷轧取向硅钢')">冷轧取向硅钢</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>钢坯</span>
-					                        <em>
-					                          <a href="javascript" onclick="zpmLink('方坯')">方坯</a><a href="javascript" onclick="zpmLink('板坯')">板坯</a><a href="javascript:;" onclick="zpmLink('钢坯')">钢坯</a><a href="javascript:;" onclick="zpmLink('矩形坯')">矩形坯</a><a href="javascript:;" onclick="zpmLink('管坯')">管坯</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>材质</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zczLink('Q235')">Q235</a><a href="javascript:;" onclick="zczLink('40Mn')">40Mn</a><a href="javascript:;" onclick="zczLink('Q235B')">Q235B</a><a href="javascript:;" onclick="zczLink('L360')">L360</a>  
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>规格</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="zggLink2('5','610','8','8.7','2','12000')">610x8.7x12000</a><a href="javascript:;" onclick="zggLink2('5','1220','8','14','2','12000')">1220x14x12000</a><a href="javascript:;" onclick="zggLink2('5','2020','8','16','2','12000')">2020x16x12000</a>
-					                        </em>
-					                      </li>
-					                      <li>
-					                        <span>产地</span>
-					                        <em>
-					                          <a href="javascript:;" onclick="ztjsjlink('永博矿山支护公司')">永博矿山支护公司</a><a href="javascript:;" onclick="ztjsjlink('天津荣程联合')">天津荣程联合</a><a href="javascript:;" onclick="ztjsjlink('五矿甬泰')">五矿甬泰</a><a href="javascript:;" onclick="ztjsjlink('鞍钢')">鞍钢</a>  
-					                        </em>
-					                      </li>
-					                      
-					                    </ul>
-					                    <div class="ad"><a href="javascript:;"><img src="/images/new_index/northchina/4.jpg" alt=""></a></div>
-					                    <p class="yy"></p>
-					                  </div>
-					                </li>
-					                
-					              </ul>
-					        </div>
-										</li>
-										<li class="nav_li"><a href="/mmecf/site/pur" class="li_link">资源求购</a></li>
-										<li class="nav_li"><a href="/sales" class="li_link">企业专区</a></li>
-										<li class="nav_li"><a href="/mmecf/site/sskc" class="li_link">实时库存</a></li>
-										<li class="nav_li"><a href="/mmecf/site/ccwl/cw" class="li_link">物流服务</a></li>
-										<li class="nav_li"><a href="/Bizinfo" class="li_link">商情资讯</a></li>
-										<li onmouseout="$(this).removeClass('last_act');" onmousemove="$(this).addClass('last_act');" class="last"> <a href="/zxrz">金融服务<em></em><span></span></a>
-					                      <div>
-					                        <p><a href="/zxrz">在线融资</a></p>
-					                        <p><a href="/zxrz/xinpay/">鑫支付</a></p>
-					                      </div>
-					                    </li>
-									</ul>			
-								</div>
-							</div>
-				
 			</div>
 
 
@@ -1181,7 +1362,7 @@
 					<dt><a href="javascript:;">字体</a></dt>
 				</dl>
 				<dl>
-					<dt><a href="javascript:;">组件</a></dt>
+					<dt><a href="javascript:;">控件</a></dt>
 				</dl>
 			</div>
 		</div>
