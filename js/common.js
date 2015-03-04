@@ -1,38 +1,77 @@
-$.fn.extend({   
-	/*
-	 *tab选项卡参数为切换时的事件。
-	 */
-
-	tabs:function(movement){  
-		aOption=$(this).find("p a");
-		aCenter=$(this).find(".tab_center");
-		aOption.each(function(i)
-		{
-			$(this)[movement?movement:"mouseover"](function()
-			{
-				aOption.removeClass("active")
-				aOption.eq(i).addClass("active")
-				aCenter.hide()
-				aCenter.eq(i).show();
-
+(function($) {
+	$.fn.extend({
+		zSelect: function() {
+			var zselect = $(this),
+			zP=zselect.find("p").eq(0),//当前选项
+			zUl=zselect.find("ul").eq(0),//下拉菜单
+			zLi=zselect.find("li"),//所有选项
+			swch=true;//开关
+			zP.click(function(){//点击显示隐藏
+				if(swch){
+					zselect.addClass("select-act");
+					swch=false;
+				}
+				else{
+					zselect.removeClass("select-act");
+					swch=true;
+				}
 			})
-		})
-	},
-	/*
-		 * Jumovepop弹窗层插件
-		 *
-		 * 这是一个弹窗层插件，可以制作可移动的弹出层。
-		 * 下面它的调用方法
-		 * $(".popContent").Jumovepop({move:true,follow:true,bg:true,close:true,bgcss:{opacity:0.1},boxcss:{}})
-		 *
-		 * FunctionJson={move:true,follow:true,bg:true,bgcss:{opacity:0.1}}
-		 * move:目标是否可拖拽,参数true or false
-		 * follow:目标是否随滚动条滚动或窗口大小改变时自动居中,参数参数true or false
-		 * close:是否显示关闭按钮(diaplay:none&block),按钮trigger仍然可以使用
-		 * bg:是否有透明背景,参数true or false
-		 * bgcss:自定义bg的css样式,参数json格式。例如{background:"red",opacity:0.1},可随意添加
-		 * parent：弹窗div
-		 */
+			zLi.hover(function(){//鼠标移动到li显示当前状态
+				$(this).addClass("act")
+			},function(){
+				$(this).removeClass("act")
+			})
+			zLi.click(function(){
+				zP.html($(this).html()).click()
+			})
+		},
+		tabs:function(movement){  
+			aOption=$(this).find("p a");
+			aCenter=$(this).find(".tab_center");
+			aOption.each(function(i)
+			{
+				$(this)[movement?movement:"mouseover"](function()
+				{
+					aOption.removeClass("active")
+					aOption.eq(i).addClass("active")
+					aCenter.hide()
+					aCenter.eq(i).show();
+
+				})
+			})
+		},
+		zTab:function(b){
+			var zBanner=$(this),
+			zUl=zBanner.find("ul").eq(0),
+			zLi=zUl.find("li"),
+			zSpan=zBanner.find("p span"),
+			zIndex=0,
+			swch=setInterval(function(){
+				zIndex++;
+				movement()
+			},b["time"]);
+
+			zUl.css("width",zLi.length*zLi.width())
+			zBanner.hover(function(){
+				clearInterval(swch)
+			},function(){
+				swch=setInterval(function(){
+					zIndex++;
+					movement()
+				},b["time"])
+			})
+			function movement(){
+				if(zIndex>=zLi.length){
+					zIndex=0;
+				}
+				zUl.stop().animate({"left":zIndex*-zLi.width()})
+				zSpan.removeClass("act").eq(zIndex).addClass("act")
+			}
+			zSpan.mouseover(function(i){
+				zIndex=$(this).index()
+				movement()
+			})
+		},
 		Jumovepop:function (json) {
 
 			var ThisBtn = $(this),
@@ -49,6 +88,7 @@ $.fn.extend({
 				}
 				This = json["parent"];
 				Close = This.find(".popClose");
+				
 
 			var Common = { // 常用
 				clientWidth:parseInt($(document.body).width()),
@@ -219,5 +259,8 @@ $.fn.extend({
 					Close.show();
 				}
 			}
-		} // Jumovepop
-})     
+		}
+	})
+})(jQuery);
+
+

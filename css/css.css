@@ -7,7 +7,7 @@ a{ outline: none;}
 .clear{zoom:1;}
 .clear:after{content:"";display:block;clear:both;}
 
-body{background: #fff}
+body{background: #fff; padding-bottom: 200px !important; }
 #box{ padding-bottom: 50px; min-width: 800px;}
 #synopsis{ background: #3498db; color: #fff;}
 #synopsis h1{ margin: 0 50px; font-family: "微软雅黑"; font-size: 26px; padding-top: 10px; height: 50px; line-height: 50px; font-weight: normal;}

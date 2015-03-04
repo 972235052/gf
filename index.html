@@ -114,6 +114,54 @@
 			$(".product-list .list ul").each(function(i){
 				floors_roll($(".product-list .list ul").eq(i),8,35);
 			})
+
+			//会员中心
+			$(".logoin-select").hover(function(){
+				$(this).addClass("logoin-select-act")
+			},function(){
+				$(this).removeClass("logoin-select-act");
+			})
+			$(".logoin-select dd").hover(function(){
+				$(this).addClass("act")
+			},function(){
+				$(this).removeClass("act")
+			})
+
+			/*模拟下拉*/
+			$(".t-storage-select").hover(function(){
+				$(this).find("ul").show();	
+			},function(){
+				$(this).find("ul").hide();
+			})
+			$(".t-storage-select ul").each(function(i) {
+		        $(this).find("li").click(function(){
+					$(".t-storage-select ul").eq(i).find("li").removeClass("t-choosen");
+					$(this).addClass("t-choosen")
+					$(".t-storage-select").eq(i).find(".t-storage-select-tit span").html($(this).html())
+					$(this).parent().hide();
+				})
+		    });
+
+		    /**/
+		    $(".z-conditions thead p").each(function(i){
+				$(this).mouseover(function(){
+					$(".z-conditions thead p").removeClass("act").eq(i).addClass("act")
+					$(".z-conditions tbody .conditions-list").removeClass("z-show").eq(i).addClass("z-show")
+				})
+			})
+			$(".z-conditions-list a").each(function(){
+				$(this).click(function(){
+					if($(this).attr("class")=="act"){
+						$(this).removeClass("act")
+					}else{
+						$(this).addClass("act")
+					}
+				})
+			})
+			$(".select").each(function(i){
+
+				$(".select").eq(i).zSelect();
+			})
 		})
 		
 		function floors_roll(obj,_lenth,_height){
@@ -1210,10 +1258,10 @@
 						</ul>			
 					</div>
 				</div>
-				<p>提示框</p>
+				<!--<p>提示框</p>
 				<div class="tishi">
 					<p class="z-tishi"></p>
-				</div>
+				</div>-->
 				<p>列表</p>
 				<div class="product-list">
 				  <div class="product-tit">
@@ -1321,7 +1369,291 @@
 				    </div>
 				  </div>
 				</div>
+				<p>交易大厅列表</p>
 
+				<div class="z-shop-list">
+					<div class="center">
+						<ul class="clear z-shop-title">
+							<li class="z-jydt-sp"><span>商品</span></li>
+							<li class="z-jydt-origin"><span>产地</span></li>
+							<li class="z-jydt-business"><span>商家</span></li>
+							<li class="z-jydt-im"><span>&nbsp;</span></li>
+							<li class="z-jydt-warehouse"><span>仓库</span></li>
+							<li class="z-jydt-quantity"><span>数量</span></li>
+							<li class="z-jydt-weight"><span>重量</span></li>
+							<li class="z-jydt-price"><span><em></em>单价￥</span></li>
+							<li class="z-jydt-buy"><span>购买</span></li>
+						</ul>
+					</div>
+					<ul class="z-buy-list">
+						<li class="z-buy-li">
+							<div class="center">
+								<ul class="clear">
+									<li class="z-jydt-sp">
+										<p><a href="#">热轧带肋钢筋</a><span class="z-jydt-btn z-btn-ck-l"></span></p>
+										<p><span>50sw8</span> <span>20*30*1200</span></p>
+										<p><span class="z-jydt-btn z-btn-zhi"></span></p>
+									</li>
+									<li class="z-jydt-origin"><span>中天钢铁</span></li>
+									<li class="z-jydt-business"><a href="#">五矿钢铁成都</a></li>
+									<li class="z-jydt-im"><span><img alt="" src="images/new_jydt/z-zx.png"></span></li>
+									<li class="z-jydt-warehouse"><span>中天</span></li>
+									<li class="z-jydt-quantity"><span>15件</span></li>
+									<li class="z-jydt-weight"><span>28.63吨</span></li>
+									<li class="z-jydt-price">
+										<p><strong class="z-price">3200</strong><span class="z-kyj"></span></p>
+									</li>
+									<li class="z-jydt-buy">
+										<div class="z-add-subtract">
+											<a class="z-subtract" href="javascript:;"></a>
+											<input type="text" class="z-subtract-input">	
+											<a class="z-add" href="javascript:;"></a>
+											<span>曾经购买</span>
+										</div>
+
+										<p><span>总价：<strong>3622000000.00元</strong></span></p>
+										<p><a href="#" class="z-car"><em>添加购物车</em></a><a href="#" class="z-buy"><em>购物</em></a></p>
+									</li>
+								</ul>
+								<a href="#" class="z-buy-push">添加对比</a>
+							</div>					
+						</li>
+						<li class="z-buy-li">
+							<div class="center">
+								<ul class="clear">
+									<li class="z-jydt-sp">
+										<p><a href="#">热轧带肋钢筋</a><span class="z-jydt-btn z-btn-ck-l"></span></p>
+										<p><span>50sw8</span> <span>20*30*1200</span></p>
+										<p><span class="z-jydt-btn z-btn-zhi"></span></p>
+									</li>
+									<li class="z-jydt-origin"><span>中天钢铁</span></li>
+									<li class="z-jydt-business"><a href="#">五矿钢铁成都</a></li>
+									<li class="z-jydt-im"><span><img alt="" src="images/new_jydt/z-zx.png"></span></li>
+									<li class="z-jydt-warehouse"><span>中天</span></li>
+									<li class="z-jydt-quantity"><span>15件</span></li>
+									<li class="z-jydt-weight"><span>28.63吨</span></li>
+									<li class="z-jydt-price">
+										<p><strong class="z-price">3200</strong><span class="z-kyj"></span></p>
+									</li>
+									<li class="z-jydt-buy">
+										<div class="z-add-subtract">
+											<a class="z-subtract" href="javascript:;"></a>
+											<input type="text" class="z-subtract-input">	
+											<a class="z-add" href="javascript:;"></a>
+											<span>曾经购买</span>
+										</div>
+
+										<p><span>总价：<strong>3622000000.00元</strong></span></p>
+										<p><a href="#" class="z-car"><em>添加购物车</em></a><a href="#" class="z-buy"><em>购物</em></a></p>
+									</li>
+								</ul>
+								<a href="#" class="z-buy-push">添加对比</a>
+							</div>					
+						</li>
+						<li class="z-buy-li">
+							<div class="center">
+								<ul class="clear">
+									<li class="z-jydt-sp">
+										<p><a href="#">热轧带肋钢筋</a><span class="z-jydt-btn z-btn-ck-l"></span></p>
+										<p><span>50sw8</span> <span>20*30*1200</span></p>
+										<p><span class="z-jydt-btn z-btn-zhi"></span></p>
+									</li>
+									<li class="z-jydt-origin"><span>中天钢铁</span></li>
+									<li class="z-jydt-business"><a href="#">五矿钢铁成都</a></li>
+									<li class="z-jydt-im"><span><img alt="" src="images/new_jydt/z-zx.png"></span></li>
+									<li class="z-jydt-warehouse"><span>中天</span></li>
+									<li class="z-jydt-quantity"><span>15件</span></li>
+									<li class="z-jydt-weight"><span>28.63吨</span></li>
+									<li class="z-jydt-price">
+										<p><strong class="z-price">3200</strong><span class="z-kyj"></span></p>
+									</li>
+									<li class="z-jydt-buy">
+										<div class="z-add-subtract">
+											<a class="z-subtract" href="javascript:;"></a>
+											<input type="text" class="z-subtract-input">	
+											<a class="z-add" href="javascript:;"></a>
+											<span>曾经购买</span>
+										</div>
+
+										<p><span>总价：<strong>3622000000.00元</strong></span></p>
+										<p><a href="#" class="z-car"><em>添加购物车</em></a><a href="#" class="z-buy"><em>购物</em></a></p>
+									</li>
+								</ul>
+								<a href="#" class="z-buy-push">添加对比</a>
+							</div>					
+						</li>
+						<li class="z-buy-li">
+							<div class="center">
+								<ul class="clear">
+									<li class="z-jydt-sp">
+										<p><a href="#">热轧带肋钢筋</a><span class="z-jydt-btn z-btn-ck-l"></span></p>
+										<p><span>50sw8</span> <span>20*30*1200</span></p>
+										<p><span class="z-jydt-btn z-btn-zhi"></span></p>
+									</li>
+									<li class="z-jydt-origin"><span>中天钢铁</span></li>
+									<li class="z-jydt-business"><a href="#">五矿钢铁成都</a></li>
+									<li class="z-jydt-im"><span><img alt="" src="images/new_jydt/z-zx.png"></span></li>
+									<li class="z-jydt-warehouse"><span>中天</span></li>
+									<li class="z-jydt-quantity"><span>15件</span></li>
+									<li class="z-jydt-weight"><span>28.63吨</span></li>
+									<li class="z-jydt-price">
+										<p><strong class="z-price">3200</strong><span class="z-kyj"></span></p>
+									</li>
+									<li class="z-jydt-buy">
+										<div class="z-add-subtract">
+											<a class="z-subtract" href="javascript:;"></a>
+											<input type="text" class="z-subtract-input">	
+											<a class="z-add" href="javascript:;"></a>
+											<span>曾经购买</span>
+										</div>
+
+										<p><span>总价：<strong>3622000000.00元</strong></span></p>
+										<p><a href="#" class="z-car"><em>添加购物车</em></a><a href="#" class="z-buy"><em>购物</em></a></p>
+									</li>
+								</ul>
+								<a href="#" class="z-buy-push">添加对比</a>
+							</div>					
+						</li>
+					</ul>
+					<div class="center z-page clear">
+						<p>
+							<a class="z-start" href="#"></a>
+							<a href="#" class="z-up"></a>
+							<span>1</span>
+							<a href="#">2</a>
+							<a href="#">3</a>
+							<a href="#">4</a>
+							<a href="#">5</a>
+							<a href="#" class="z-next"></a>
+							<a href="#" class="z-end"></a>
+						</p>
+					</div>
+				</div>
+
+				<p>模拟下拉</p>
+				<div class="logoin">
+				
+					<div class="logoin-select">
+						<p>会员登录</p>
+						<div class="z-member">
+							<dl>
+								<dd><a href="http://10.2.19.11/mmecf/site/center/member/bookmark/base/" target="_blank">收藏夹</a></dd>
+								<dd><a href="http://10.2.19.11/mmecf/site/center/member/account/msg/" target="_blank">站内信  <span>(1)</span></a></dd>
+							</dl>
+							<dl>
+								<dt>我要买</dt>
+								<dd><a href="http://10.2.19.11/mmecf/site/center/buyer/?s=myysell1" target="_blank">买家中心</a></dd>
+								<dd><a href="http://10.2.19.11/mmecf/site/center/buyer/orderManager/base/" target="_blank">采购订单管理</a></dd>
+							</dl>
+							<dl>
+								<dt>我要卖</dt>
+								<dd><a href="http://10.2.19.11/mmecf/site/center/seller/?s=myysell1" target="_blank">卖家中心</a></dd>
+								<dd class="dd-act">
+									<a href="javascript:;">创建商品</a>
+									<ul>
+										<li><a href="http://10.2.19.11/mmecf/site/center/seller/createGoods/numberProduct/" target="_blank">数码仓商品</a></li>
+										<li><a href="http://10.2.19.11/mmecf/site/center/seller/createGoods/sincereProduct/" target="_blank">诚意金商品</a></li>
+
+
+									</ul>				
+								</dd>
+								<dd><a href="http://10.2.19.11/mmecf/site/center/seller/manageOrders/base/" target="_blank">销售订单管理</a></dd>
+							</dl>
+						</div>
+					</div>
+				
+
+					<div class="t-storage-select">
+				        <p class="t-storage-select-tit">区域：<span>绥化地区</span></p>
+				        <ul style="display: none;">
+				          <li>双鸭山市</li>
+				          <li class="t-choosen">绥化地区</li>
+				          <li class="">五营区</li>
+				          <li class="">伊春市</li>
+				        
+				        </ul>
+				    </div>
+			    </div>
+
+			    <p>切换标签</p>
+			    <div class="z-conditions">
+					<table>
+						<thead>
+							<tr>
+								<td><div><p class=""><strong>品名</strong><span><em>2</em></span></p></div></td>
+								<td><div><p class="act"><strong>材质</strong><span><em>2</em></span></p></div></td>
+								<td><div><p class=""><strong>产地</strong><span><em>2</em></span></p></div></td>
+								<td><div><p><strong>城市</strong><span><em>2</em></span></p></div></td>
+								<td><div><p><strong>仓库</strong><span><em>2</em></span></p></div></td>
+								<td><div><p><strong>推荐商家</strong><span><em>2</em></span></p></div></td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="6">
+									<div class="conditions-list">
+										<p class="z-conditions-list clear">
+											<a href="javascript:;">中天钢铁</a>
+											<a href="javascript:;" class="act">内蒙古乌兰浩特</a>
+											<a href="javascript:;">包头钢铁</a>
+											<a href="javascript:;" class="act">唐山国车</a>
+											<a href="javascript:;">四川达州</a>
+											<a href="javascript:;">天津荣程</a></p>
+									</div>
+									<div class="conditions-list z-show">
+										<p class="z-conditions-list clear"><a href="javascript:;">中天钢铁</a><a href="javascript:;">内蒙古乌兰浩特</a><a href="javascript:;">包头钢铁</a><a href="javascript:;">唐山国车</a><a href="javascript:;">四川达州</a><a href="javascript:;">天津荣程</a></p>
+									</div>
+									<div class="conditions-list">
+										<p class="z-conditions-list clear"><a href="#">中天钢铁</a><a href="#">内蒙古乌兰浩特</a><a href="#">包头钢铁</a><a href="#">唐山国车</a><a href="#">四川达州</a><a href="#">天津荣程</a></p>
+										<a class="z-move" href="javascript:;"></a>
+										<div class="z-move-list">
+											<p class="z-options clear"><a class="act" href="#">全部</a><a href="javascript:;">ABCDE</a><a href="javascript:;">FGHIJ</a><a href="javascipt:;">KLMNO</a><a href="javascript:;">PQRST</a><a href="javascript:;">UVWXYZ</a></p>
+											<p class="z-conditions-list"><a href="javascript:;">中天钢铁</a><a href="javascript:;">内蒙古乌兰浩特</a><a href="javascript:;">包头钢铁</a><a href="javascript:;">唐山国车</a><a href="javascript:;">四川达州</a><a href="javascript:;">天津荣程</a></p>
+										</div>
+									</div>
+									<div class="conditions-list">
+										<p class="z-conditions-list clear"><a href="javascript:;">中天钢铁</a><a href="javascript:;">内蒙古乌兰浩特</a><a href="javascript:;">包头钢铁</a><a href="javascript:;">唐山国车</a><a href="javascript:;">四川达州</a><a href="javascript:;">天津荣程</a></p>
+
+									</div>
+									<div class="conditions-list">
+										<p class="z-conditions-list clear"><a href="javascript:;">中天钢铁</a><a href="javascript:;">内蒙古乌兰浩特</a><a href="javascript:;">包头钢铁</a><a href="javascript:;">唐山国车</a><a href="javascript:;">四川达州</a><a href="javascript:;">天津荣程</a></p>
+									</div>
+									<div class="conditions-list">
+										<p class="z-conditions-list clear"><a href="javascript:;">中天钢铁</a><a href="javascript:;">内蒙古乌兰浩特</a><a href="javascript:;">包头钢铁</a><a href="javascript:;">唐山国车</a><a href="javascript:;">四川达州</a><a href="javascript:;">天津荣程</a></p>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+				<p>搜索</p>
+				<div class="head-bottom">
+					
+				
+					<div class="z-search">
+			        <div class="select search-type">
+			          <p>商品</p>
+			          <ul>
+			            <li class="">商品</li>
+			            <li class="">资讯</li>
+			          </ul>
+			        </div>
+			        <div class="search-input">
+			          <p>
+			            <input type="text" class="search-txt">
+			          </p>
+			          <ul>
+			            <li>螺纹钢</li>
+			            <li class="act">热卷</li>
+			            <li>热轧板卷</li>
+			            <li>线材</li>
+			            <li>工字钢</li>
+			          </ul>
+			        </div>
+			        <div class="search-botton"><a href="javascript:;"></a></div>
+			      </div>
+			    </div>
 			</div>
 
 
@@ -1370,7 +1702,7 @@
 
 	<!--弹出层布局-->
 	<div class="Alert popContent">
-		<h4>提示<span class="ico ico-close popClose"></span></h4>
+		<h4>提示<span class="z-ico-close popClose"></span></h4>
 		<div class="A-center">
 			<p>保存成功，5条信息已保存!</p>
 			<p class="A-right"><input class="btn btn-confirm btn-radius" type="button" value="确定"> <input class="btn btn-clear btn-radius popClose" type="button" value="取消"></p>
@@ -1379,7 +1711,9 @@
 	<div class="loading">
 		<div class="A-center">
 			<span class="ico ico-close popClose"></span>
-			<img src="images/big_load.gif" alt="">
+			
+			<p class="loading-qut"><img src="images/load.gif" alt=""><span>加载中...</span></p>
+
 		</div>
 	</div>
 </html>
