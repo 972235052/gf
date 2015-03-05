@@ -162,6 +162,25 @@
 
 				$(".select").eq(i).zSelect();
 			})
+
+			$(".z-price-par input").each(function(){
+				$(this).focus(function(){
+					$(this).parents(".z-price").addClass("z-price-act")
+				});
+
+			});
+			$(".z-price,.z-specification-chid").click(function(event)
+			{
+				event.stopPropagation();
+			})
+			$("body").click(function(){
+				$(".z-price").removeClass("z-price-act");
+				$(".z-specification-chid").removeClass("z-specification-chid-act");
+				$(".z-price input,.z-specification-chid input").css("position","relative");
+		//		$(".z-price input").css("background","#000");
+				setTimeout(function(){$(".z-price input,.z-specification-chid input").css("top","1px")},50);
+				setTimeout(function(){$(".z-price input,.z-specification-chid input").css("top","0px")},100);
+			});
 		})
 		
 		function floors_roll(obj,_lenth,_height){
@@ -661,6 +680,18 @@
 				</div>
 				
 				<h2>tab选项卡</h2>
+				<div id="tab-news" class="z-business-list">
+				    <div id="steelInfo-tabMenu" class="tabmenu">
+				      <ul>
+				          <li class="current">
+				              <a href="./Manuinfo/dynamic/" target="_blank">钢厂动态</a>
+				          </li>
+				          <li>
+				              <a href="./Manuinfo/priceInfo/" target="_blank">调价信息</a>
+				          </li>
+				      </ul>
+				    </div>
+				</div>
 				<div class="tabs">
 					<p class="clear"><a class="active" href="javascript:;">最新成交</a><a href="javascript:;">库存查询</a></p>
 					<div class="tab-center act">
@@ -804,6 +835,9 @@
 					<span class="z-ico z-ico-sj"></span>
 					<span class="z-ico z-ico-yx"></span>
 					<span class="z-ico z-ico-xl"></span>
+					<a href="javascript: void(0);" class="z-join"></a>
+					<a href="javascript: void(0);" class="z-join-act"></a>
+					<em class="z-ppraisal"><span style="width: 51.599999999999994px;"></span></em>
 				</p>
 				<p>
 					<span class="z-ico z-ico-nl"></span>
@@ -997,6 +1031,7 @@
 					<span class="fong-h2">22号微软雅黑加粗</span><br />
 					<span class="fong-h1">28号微软雅黑加粗</span><br />
 				</p>
+				<p>黑色字体用#333 蓝色字体用#2590f7</p>
 				<div class="daima">
 
 <pre>
@@ -1912,7 +1947,7 @@
 									</li>
 									<li class="z-jydt-origin"><span>中天钢铁</span></li>
 									<li class="z-jydt-business"><a href="#">五矿钢铁成都</a></li>
-									<li class="z-jydt-im"><span><img alt="" src="images/new_jydt/z-zx.png"></span></li>
+									<li class="z-jydt-im"><span><img alt="" src="images/new_jydt/z-lx.png"></span></li>
 									<li class="z-jydt-warehouse"><span>中天</span></li>
 									<li class="z-jydt-quantity"><span>15件</span></li>
 									<li class="z-jydt-weight"><span>28.63吨</span></li>
@@ -2023,7 +2058,16 @@
     &lt;/li>
   &lt;/ul>
   &lt;div class="center z-page clear">
-    &lt;p> &lt;a class="z-start" href="#">&lt;/a> &lt;a href="#" class="z-up">&lt;/a> &lt;span>1&lt;/span> &lt;a href="#">2&lt;/a> &lt;a href="#">3&lt;/a> &lt;a href="#">4&lt;/a> &lt;a href="#">5&lt;/a> &lt;a href="#" class="z-next">&lt;/a> &lt;a href="#" class="z-end">&lt;/a> &lt;/p>
+    &lt;p> &lt;a class="z-start" href="#">&lt;/a> 
+    	&lt;a href="#" class="z-up">&lt;/a> 
+    	&lt;span>1&lt;/span> 
+    	&lt;a href="#">2&lt;/a> 
+    	&lt;a href="#">3&lt;/a> 
+    	&lt;a href="#">4&lt;/a> 
+    	&lt;a href="#">5&lt;/a> 
+    	&lt;a href="#" class="z-next">&lt;/a> 
+    	&lt;a href="#" class="z-end">&lt;/a>
+    &lt;/p>
   &lt;/div>
 &lt;/div>
 
@@ -2432,61 +2476,49 @@
 			        <div class="search-botton"><a href="javascript:;"></a></div>
 			      </div>
 			    </div>
+
+			    <div class="z-price-par">
+					<div class="z-price">
+						<p>价格：
+		 					<input  value="" type="text" style="position: relative; top: 0px;" /><span>-</span><input value=""  style="padding-left: 0px; position: relative; top: 0px;" type="text" />
+		 				</p>
+		 				<p>
+		 					<a href="#" id="p-doSubmit" class="z-link">确定</a>
+		 					<a href="#" id="id-price-clear">清空</a>
+		 				</p>
+		 			</div>
+		 		</div>
 			    <div class="daima">
 					<pre>
-	<code data-language="html">&lt;div class="head-bottom">
-    &lt;div class="z-search">
-    &lt;div class="select search-type">
-      &lt;p>商品&lt;/p>
-      &lt;ul>
-        &lt;li class="">商品&lt;/li>
-        &lt;li class="">资讯&lt;/li>
-      &lt;/ul>
+	<code data-language="html">&lt;div class="z-price-par">
+    &lt;div class="z-price">
+        &lt;p>价格：
+            &lt;input  value="" type="text" style="position: relative; top: 0px;" />
+            &lt;span>-&lt;/span>
+            &lt;input value=""  style="padding-left: 0px; position: relative; top: 0px;" type="text" />
+        &lt;/p>
+        &lt;p>
+            &lt;a href="#" id="p-doSubmit" class="z-link">确定&lt;/a>
+            &lt;a href="#" id="id-price-clear">清空&lt;/a>
+        &lt;/p>
     &lt;/div>
-    &lt;div class="search-input">
-      &lt;p>
-        &lt;input type="text" class="search-txt">
-      &lt;/p>
-      &lt;ul>
-        &lt;li>螺纹钢&lt;/li>
-        &lt;li class="act">热卷&lt;/li>
-        &lt;li>热轧板卷&lt;/li>
-        &lt;li>线材&lt;/li>
-        &lt;li>工字钢&lt;/li>
-      &lt;/ul>
-    &lt;/div>
-    &lt;div class="search-botton">&lt;a href="javascript:;">&lt;/a>&lt;/div>
-  &lt;/div>
-&lt;/div></code>
-				    </pre>
-				    <input type="button" class="btn btn-clear btn-fz" value="复制" />
-				    <div class="hide">
-				        <div class="head-bottom clear">
-				            <div class="z-search">
-				            <div class="select search-type">
-				              <p>商品</p>
-				              <ul>
-				                <li class="">商品</li>
-				                <li class="">资讯</li>
-				              </ul>
-				            </div>
-				            <div class="search-input">
-				              <p>
-				                <input type="text" class="search-txt">
-				              </p>
-				              <ul>
-				                <li>螺纹钢</li>
-				                <li class="act">热卷</li>
-				                <li>热轧板卷</li>
-				                <li>线材</li>
-				                <li>工字钢</li>
-				              </ul>
-				            </div>
-				            <div class="search-botton"><a href="javascript:;"></a></div>
-				          </div>
-				        </div>
-				    </div>
-				</div>
+&lt;/div>></code>
+</pre>
+<input type="button" class="btn btn-clear btn-fz" value="复制" />
+<div class="hide">
+    <div class="z-price-par">
+        <div class="z-price">
+            <p>价格：
+                <input  value="" type="text" style="position: relative; top: 0px;" /><span>-</span><input value=""  style="padding-left: 0px; position: relative; top: 0px;" type="text" />
+            </p>
+            <p>
+                <a href="#" id="p-doSubmit" class="z-link">确定</a>
+                <a href="#" id="id-price-clear">清空</a>
+            </p>
+        </div>
+    </div>
+</div>
+				
 			</div>
 
 
